@@ -1,0 +1,15 @@
+name: __THEME_NAME__
+type: theme
+base theme: basekit
+core_version_requirement: ^11
+libraries:
+  - __THEME_MACHINE__/base
+libraries-override:
+  basekit/base: false
+  basekit/messages: false
+  basekit/pushy: false
+  basekit/fonts.typography: false
+  # Map BaseKit component libraries to sub‑theme outputs if you compile per‑component CSS
+  # basekit/hero_headline: __THEME_MACHINE__/hero_headline
+  # basekit/hero_announcement: __THEME_MACHINE__/hero_announcement
+
