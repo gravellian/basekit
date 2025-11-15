@@ -1,0 +1,22 @@
+@use '../base' as *;
+
+.block.block-system-branding-block {
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.block.block-system-branding-block a.site-logo {
+  display: block;
+  width: 8em;
+  @include desktop-small {
+    width: 18em;
+  }
+}
+
+.block.block-system-branding-block a.site-logo svg {
+  width: 100%;
+  height: auto;
+}

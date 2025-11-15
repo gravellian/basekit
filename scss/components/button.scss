@@ -1,0 +1,49 @@
+/**
+ * @file
+ * Visual styles for buttons.
+ */
+@use '../base' as *;
+
+/* Core button controls */
+button,
+.button a,
+input.button,
+a.button,
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  padding: $link-pad;
+  color: $white;
+  background: rgba($color-2, 0.8);
+  border: $border-dark;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $white;
+    background: rgba($color-2, 0.8);
+    border: $border-dark;
+  }
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: rgba($color-3, 1);
+    border: $border-dark;
+    outline: $stroke-1 solid rgba($white, 0.8);
+    outline-offset: 0.01em;
+  }
+
+  &:active {
+    transform: scale(0.97);
+    background-color: rgba($color-2, 1);
+  }
+
+  &:last-child { margin-right: 0; }
+}
+
+/* Legacy utility spacing for theme buttons */
+.button,
+.image-button { margin-right: 1em; margin-left: 1em; }
+.button:first-child,
+.image-button:first-child { margin-right: 0; margin-left: 0; }

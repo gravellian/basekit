@@ -1,0 +1,55 @@
+@use '../base' as *;
+
+nav {
+  /* position this element in layouts */
+}
+
+nav.action-links {
+  @include nav-horz;
+  ul {
+    li {
+      a:link,
+      a:visited {
+        background-color: rgba($site-bgcolor, 0.5);
+      }
+    }
+  }
+}
+
+nav.menu--account {
+  @include nav-horz;
+
+  ul.menu {
+    li.menu-item {
+      margin: 0 0.5em;
+
+      span,
+      a,
+      a:visited {
+        @include bodytext;
+        & {
+          line-height: $link-height * 0.9;
+          font-size: $m-link-size * 1.2;
+          background-color: rgba($site-bgcolor, 0.45);
+          color: $color-text;
+          @include desktop-small {
+            font-size: $d-link-size;
+          }
+        }
+      }
+
+      a:hover {
+        background-color: rgba($site-bgcolor, 0.75);
+        color: $text-bright;
+      }
+
+      a:active {
+        color: $text-bright;
+      }
+
+      a.is-active {
+        color: $brand-primary;
+      }
+    }
+  }
+}

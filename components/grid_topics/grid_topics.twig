@@ -1,0 +1,7 @@
+{{ attach_library('basekit/grid_topics') }}
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/grid_topics/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/grid_topics/partials/default.html.twig'
+], { props: props }) }}
+

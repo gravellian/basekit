@@ -1,0 +1,9 @@
+{
+  "name": "gravellian/basekit",
+  "type": "drupal-theme",
+  "description": "BaseKit Drupal 11 base theme",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.1"
+  }
+}

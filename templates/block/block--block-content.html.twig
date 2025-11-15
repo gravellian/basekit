@@ -1,0 +1,24 @@
+{#
+  Base template for custom block_content entities.
+  Standardizes classes and provides a single inner wrapper `.block-wrap`.
+  Components rendered by per-bundle templates should not output `.block-wrap`.
+#}
+
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  (block_bundle is defined and block_bundle) ? 'block-type--' ~ block_bundle : null,
+  (block_view_mode is defined and block_view_mode) ? 'block-view-mode--' ~ block_view_mode : null,
+] | filter(v => v) %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {# Suppress default H2; components handle label chrome. #}
+  {{ title_suffix }}
+  <div class="block-wrap{{ label ? ' wlabel' }}">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+</div>

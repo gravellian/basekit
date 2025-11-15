@@ -1,0 +1,53 @@
+{#
+  Generic Pushy-only rendering for any menu placed in Sidebar first.
+  Enabled by basekit_preprocess_block() which changes the menu theme to
+  `menu__pushy` only for core `system_menu_block` in region `sidebar_first`.
+
+  - Leaf items render as links with class `pushy-link`.
+  - Items with children render as `li.pushy-submenu > button + ul` so Pushy v2
+    JS can handle open/close and show the arrow indicator.
+#}
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_item(item, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% set has_children = item.below is not empty %}
+  {% set classes = [
+    'menu-item',
+    has_children ? 'pushy-submenu' : 'pushy-link',
+    has_children ? (item.in_active_trail ? 'pushy-submenu-open' : 'pushy-submenu-closed') : '',
+    item.in_active_trail ? 'menu-item--active-trail'
+  ] %}
+
+  <li{{ item.attributes.addClass(classes) }}>
+    {% if has_children %}
+      <button type="button">{{ item.title }}</button>
+      <ul class="menu">
+        {# Parent link as first child, demo-style #}
+        <li class="menu-item pushy-link pushy-parent-link">{{ link(item.title, item.url) }}</li>
+        {% for child in item.below %}
+          {{ menus.menu_item(child, attributes, menu_level + 1) }}
+        {% endfor %}
+      </ul>
+    {% else %}
+      {{ link(item.title, item.url) }}
+    {% endif %}
+  </li>
+{% endmacro %}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass('menu') }}>
+    {% else %}
+      <ul class="menu">
+    {% endif %}
+    {% for item in items %}
+      {{ menus.menu_item(item, attributes, menu_level) }}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

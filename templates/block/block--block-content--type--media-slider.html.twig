@@ -1,0 +1,18 @@
+{# Media Slider block delegates rendering to the SDC component. #}
+
+{% extends "block--block-content.html.twig" %}
+{# Media Slider block delegates rendering to the SDC component. #}
+
+{% block content %}
+  {% set _media = content.field_block_media is defined ? content.field_block_media|render : '' %}
+  {% set _vm = block_view_mode|default('default') %}
+
+  {{ include('@basekit/components/media_slider/media_slider.html.twig', {
+    props: {
+      has_label: label ? true : false,
+      label: label,
+      media: _media,
+      view_mode: _vm,
+    }
+  }) }}
+{% endblock %}

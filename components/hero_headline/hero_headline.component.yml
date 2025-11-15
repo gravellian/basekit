@@ -1,0 +1,24 @@
+name: 'Hero Headline'
+description: 'Headline-focused hero component.'
+status: stable
+template: hero_headline
+library: basekit/hero_headline
+props:
+  type: object
+  properties:
+    view_mode:
+      type: string
+      default: 'default'
+    has_label:
+      type: boolean
+      default: false
+    label:
+      type: string
+    text:
+      type: string
+    url:
+      type: string
+    link_title:
+      type: string
+    icon:
+      type: string

@@ -1,0 +1,24 @@
+{% extends "block--block-content.html.twig" %}
+{# Generic template for hero_headline; delegates to SDC #}
+
+{% block content %}
+  {% set _link_obj = content.field_block_link is defined and content.field_block_link|render|striptags|trim ? content.field_block_link.0['#url'] : null %}
+  {% set _link_url = _link_obj %}
+  {% set _link_title = content.field_block_link is defined and content.field_block_link|render|striptags|trim ? content.field_block_link.0['#title'] : null %}
+  {% set _icon = content.field_block_icon is defined ? content.field_block_icon|render : null %}
+  {% set _text = content.field_block_text is defined ? content.field_block_text|render : '' %}
+  {% set _vm = block_view_mode|default('default') %}
+  {# Use only the dedicated title field; if empty, omit visual title entirely. #}
+  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
+  {{ include('@basekit/components/hero_headline/hero_headline.html.twig', {
+    props: {
+      has_label: _title ? true : false,
+      label: _title,
+      text: _text,
+      url: _link_url,
+      link_title: _link_title,
+      icon: _icon,
+      view_mode: _vm,
+    }
+  }) }}
+{% endblock %}

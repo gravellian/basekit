@@ -1,0 +1,227 @@
+@use 'var_default' as vars;
+
+// Forward any other partials (only if this file is meant to re-export them)
+@forward 'load-effects';
+
+// ========================================
+// Breakpoint Mixins
+// ========================================
+
+@mixin desktop-small {
+  @media all and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-medium {
+  @media all and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media all and (min-width: 1365px) {
+    @content;
+  }
+}
+
+@mixin desktop-max {
+  @media all and (min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin body-h2 {
+  font-size: vars.$font-size-h2;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0.25em;
+  letter-spacing: -0.02em;
+  font-family: vars.$font-heading;
+  color: vars.$color-h2;
+  font-weight: vars.$font-weight-h2;
+  &:after {
+    margin-top: 0.2em;
+    border-bottom: 2px solid rgba(vars.$color-h2, 0.85);
+    display: flex; /* prevent border-bottom from overlapping floats */
+    content: '';
+  }
+}
+
+@mixin body-h3 {
+  font-size: vars.$font-size-h3;
+  letter-spacing: 0.03em;
+  font-family: vars.$font-heading-narrow;
+  margin-top: 0;
+  margin-bottom: 2em;
+  color: vars.$color-h3;
+  font-weight: vars.$font-weight-h3;
+}
+
+@mixin body-h4 {
+  font-size: vars.$font-size-h4;
+  letter-spacing: -0.03em;
+  margin-top: 0;
+  margin-bottom: 2em;
+  font-weight: vars.$font-weight-h4;
+}
+
+@mixin body-h5 {
+  font-size: vars.$font-size-h5;
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: vars.$gray;
+}
+
+@mixin body-h6 {
+  font-size: vars.$font-size-h6;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+@mixin block-pop {
+  position: relative;
+  border-radius: vars.$block-border-radius;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.2);
+  padding: 3em;
+}
+
+// ========================================
+// Typography
+// ========================================
+
+@mixin headingtext {
+  font-style: normal;
+  font-weight: 700;
+  font-family: vars.$font-heading;
+
+  strong,
+  b {
+    font-weight: 900;
+  }
+}
+
+@mixin bodytext {
+  font-style: normal;
+  font-weight: 300;
+  font-family: vars.$font-body;
+
+  strong,
+  b {
+    font-weight: 500;
+  }
+
+  .light {
+    font-weight: 100;
+  }
+}
+
+@mixin uline {
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+
+  span {
+    &::after {
+      display: block;
+      position: absolute;
+      width: 105%;
+      left: -2.5%;
+      bottom: -0.2em;
+      height: 0.5em;
+      content: '';
+      background-image: url(../images/underline.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+  }
+}
+
+@mixin nav-horz {
+  display: block;
+  @include desktop-small {
+    display: inline-block;
+  }
+  ul.menu,
+  ul.tabs,
+  &.action-links ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    @include desktop-small {
+      flex-direction: row;
+    }
+    /* begin nested menu styles */
+
+    > li {
+      margin: 0;
+      margin-bottom: vars.$link-space;
+      padding: 0;
+      list-style-image: none;
+      list-style-type: none;
+      @include desktop-small {
+        margin: 0;
+        margin-right: vars.$link-space;
+      }
+    }
+
+    > li > span,
+    > li > a,
+    > li > a:visited {
+      display: block;
+      padding: 0 vars.$link-pad-right 0 vars.$link-pad-left;
+      text-decoration: none;
+      line-height: vars.$link-height;
+      font-size: vars.$m-link-size;
+      /**/
+      color: vars.$link-color;
+      border: vars.$link-border;
+      @include desktop-small {
+        border-radius: vars.$link-radius;
+        font-size: vars.$d-link-size;
+      }
+    }
+
+    > li > a:hover {
+      color: vars.$link-hover-color;
+      background-color: vars.$link-hover-bgcolor;
+      border: vars.$link-hover-border;
+    }
+
+    > li > a:active {
+      color: vars.$link-click-color;
+      background-color: vars.$link-click-bgcolor;
+      border: vars.$link-click-border;
+    }
+
+    > li > a.is-active,
+    > li > a.is-active:visited {
+      color: vars.$link-isactive-color;
+      background-color: vars.$link-isactive-bgcolor;
+      border: vars.$link-isactive-border;
+    }
+
+    > li > a.is-active:hover {
+      color: vars.$link-isactive-hover-color;
+      background-color: vars.$link-isactive-hover-bgcolor;
+      border: vars.$link-isactive-hover-border;
+      cursor: default; /* leave cursor unchanged */
+    }
+
+    > li > a.is-active:active {
+      color: vars.$link-isactive-click-color;
+      background-color: vars.$link-isactive-click-bgcolor;
+      border: vars.$link-isactive-click-border;
+    }
+
+    > li.menu-item--collapsed {
+    }
+    /* end nested menu styles */
+  }
+}

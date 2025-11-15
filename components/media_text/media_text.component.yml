@@ -1,0 +1,16 @@
+name: 'Media + Text'
+description: 'Split media/text component.'
+status: stable
+template: media_text
+library: basekit/media_text
+props:
+  type: object
+  properties:
+    view_mode: { type: string, default: 'default' }
+    has_label: { type: boolean, default: false }
+    label: { type: string }
+    text: { type: string }
+    url: { type: string }
+    link_title: { type: string }
+    image: { type: string }
+

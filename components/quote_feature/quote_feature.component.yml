@@ -1,0 +1,16 @@
+name: 'Quote Feature'
+description: 'Quote-led promotional/feature component.'
+status: stable
+template: quote_feature
+library: basekit/quote_feature
+props:
+  type: object
+  properties:
+    view_mode: { type: string, default: 'default' }
+    has_label: { type: boolean, default: false }
+    label: { type: string }
+    text: { type: string }
+    url: { type: string }
+    link_title: { type: string }
+    image: { type: string }
+

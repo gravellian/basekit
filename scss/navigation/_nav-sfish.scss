@@ -1,0 +1,443 @@
+@use '../base' as *;
+
+/* Base list resets for Superfish menu */
+ul.sf-menu.sf-style-dg {
+  margin-bottom: 1em;
+  padding: 0;
+}
+ul.sf-menu.sf-style-dg.sf-navbar {
+  width: 100%;
+}
+
+/* Hide Superfish's injected indicator; we use ::after carets */
+ul.sf-menu.sf-style-dg .sf-sub-indicator {
+  display: none;
+}
+ul.sf-menu.sf-style-dg ul {
+  margin: 0;
+  padding: 0;
+}
+ul.sf-menu.sf-style-dg {
+  margin-bottom: 1em;
+  padding: 0;
+}
+ul.sf-menu.sf-style-dg.sf-navbar {
+  width: 100%; /* navbar width to 100% */
+}
+
+ul.sf-menu.sf-style-dg ul {
+  /* Subnav has 0 margin or padding - set subnav background-color and border here */
+  background-color: rgba(transparent, 0);
+}
+ul.sf-menu.sf-style-dg > li {
+  margin-right: $link-space;
+}
+/* default menu link style - adjust submenus in next definition */
+ul.sf-menu.sf-style-dg li > a,
+ul.sf-menu.sf-style-dg li > a:visited,
+ul.sf-menu.sf-style-dg li > span.nolink {
+  border: $link-border;
+  color: $link-color;
+  padding: 0 $link-pad-right 0 $link-pad-left;
+  text-decoration: none;
+  line-height: $link-height;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  background-color: $site-bgcolor;
+  font-size: $m-link-size;
+  border-radius: $link-radius;
+}
+
+/* sub-menu link style - adjust submenus in next definition */
+ul.sf-menu.sf-style-dg li li > a,
+ul.sf-menu.sf-style-dg li li > a:visited,
+ul.sf-menu.sf-style-dg li li > span.nolink {
+  margin-top: -1px;
+}
+
+/* links that have submenus */
+ul.sf-menu.sf-style-dg a.sf-with-ul,
+ul.sf-menu.sf-style-dg span.nolink.sf-with-ul {
+  padding-right: 0; /* remove pad let element spacing take over */
+}
+ul.sf-menu.sf-style-dg.rtl a.sf-with-ul,
+ul.sf-menu.sf-style-dg.rtl span.nolink.sf-with-ul {
+  padding-right: 0; /* remove pad let element spacing take over */
+}
+
+ul.sf-menu.sf-style-dg span.sf-description {
+  color: #aaa;
+  display: block;
+  font-size: smaller;
+  line-height: 1.5;
+  margin: 0.25em 0 0 0;
+  padding: 0;
+}
+
+/* backgrounds on first level list items */
+ul.sf-menu.sf-style-dg > li,
+ul.sf-menu.sf-style-dg.sf-navbar {
+  /* list items are transparent */
+  background: transparent;
+}
+
+/* backgrounds for uls inside lis and lis inside lis */
+ul.sf-menu.sf-style-dg li li,
+ul.sf-menu.sf-style-dg.sf-navbar > li > ul {
+  background: transparent;
+}
+ul.sf-menu.sf-style-dg li li li {
+  background: transparent;
+}
+
+/* background color on focused or hovered links */
+/* Submenu hover/focus styling; top-level handled below */
+ul.sf-menu.sf-style-dg li li a:focus,
+ul.sf-menu.sf-style-dg li li a:hover,
+ul.sf-menu.sf-style-dg li li span.nolink {
+  background-color: shade($site-bgcolor, 6%);
+  outline: 0;
+  text-decoration: none;
+  color: $link-hover-color;
+  /* avoid side borders on hover */
+  border: 0;
+  border-bottom: $stroke-1 solid rgba($color-1, 0.35);
+}
+
+.sf-menu.sf-style-dg.sf-navbar li ul {
+  background: #f7f7f7;
+}
+.sf-menu.sf-style-dg.sf-navbar li ul li ul {
+  background: transparent;
+}
+div.sf-accordion-toggle.sf-style-dg a {
+  background: #210c02;
+  border: 1px solid #381301;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 1em 3em 1em 1em;
+  position: relative;
+}
+
+div.sf-accordion-toggle.sf-style-dg > a:after {
+  content: '≡';
+  font-size: 2em;
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  speak: none;
+}
+div.sf-accordion-toggle.sf-style-dg a.sf-expanded,
+ul.sf-menu.sf-style-dg.sf-accordion li.sf-expanded {
+  background: #52250f;
+}
+div.sf-accordion-toggle.sf-style-dg a.sf-expanded,
+ul.sf-menu.sf-style-dg.sf-accordion li.sf-expanded > a,
+ul.sf-menu.sf-style-dg.sf-accordion li.sf-expanded > span.nolink {
+  font-weight: bold;
+}
+ul.sf-menu.sf-style-dg.sf-accordion li a.sf-accordion-button {
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+ul.sf-menu.sf-style-dg.sf-accordion li li a,
+ul.sf-menu.sf-style-dg.sf-accordion li li span.nolink {
+  padding-left: 2em;
+}
+ul.sf-menu.sf-style-dg.sf-accordion li li li a,
+ul.sf-menu.sf-style-dg.sf-accordion li li li span.nolink {
+  padding-left: 3em;
+}
+ul.sf-menu.sf-style-dg.sf-accordion li li li li a,
+ul.sf-menu.sf-style-dg.sf-accordion li li li li span.nolink {
+  padding-left: 4em;
+}
+ul.sf-menu.sf-style-dg.sf-accordion li li li li li a,
+ul.sf-menu.sf-style-dg.sf-accordion li li li li li span.nolink {
+  padding-left: 5em;
+}
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li a,
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li span.nolink {
+  padding-left: auto;
+  padding-right: 2em;
+}
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li a,
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li span.nolink {
+  padding-left: auto;
+  padding-right: 3em;
+}
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li li a,
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 4em;
+}
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li li li a,
+ul.sf-menu.sf-style-dg.rtl.sf-accordion li li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 5em;
+}
+ul.sf-menu.sf-style-dg li.sf-multicolumn-wrapper ol,
+ul.sf-menu.sf-style-dg li.sf-multicolumn-wrapper ol li {
+  margin: 0;
+  padding: 0;
+}
+ul.sf-menu.sf-style-dg li.sf-multicolumn-wrapper a.menuparent,
+ul.sf-menu.sf-style-dg li.sf-multicolumn-wrapper span.nolink.menuparent {
+  font-weight: bold;
+}
+
+/* sub-indicator -- overwrite the default */
+ul.sf-menu .sf-sub-indicator {
+  height: auto;
+  opacity: 1;
+  overflow: auto;
+  position: relative;
+  right: auto;
+  speak: none;
+  text-indent: 0;
+  top: auto;
+  -webkit-transform: inherit;
+  -moz-transform: inherit;
+  -ms-transform: inherit;
+  -o-transform: inherit;
+  transform: inherit;
+  width: $link-pad-top * 2;
+  display: inline-block;
+  line-height: $link-height;
+  vertical-align: middle;
+  background-image: url('../../images/default/dropdown.svg');
+  background-color: rgba($color-1, 0.75);
+  mask-image: url('../../images/default/dropdown.svg');
+  -webkit-mask-image: url('../../images/default/dropdown.svg');
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center center;
+  -webkit-mask-position: center center;
+  mask-size: 60%;
+  -webkit-mask-size: 60%;
+  color: transparent; /* hide text */
+}
+
+/* dropdown positioning -- overwrite the default */
+ul.sf-menu li:hover > ul,
+ul.sf-menu li.sfHover > ul {
+  left: 0;
+  top: $link-height + 0.25em;
+}
+
+/* =============================================================
+   Superfish default style (parameterized) — overrides above
+   Targets only `.sf-style-dg` instance to allow easy theming.
+   Customize via variables here or in base/_var_default.scss.
+   ============================================================= */
+
+/* Theming variables (tuned to match example site) */
+$sf-link-font-size-mobile: $m-link-size !default;
+$sf-link-font-size-desktop: $d-link-size !default;
+$sf-link-height: $link-height !default;
+$sf-link-radius: $link-radius !default;
+$sf-gap: $link-space !default;
+$sf-pad-left: $link-pad-left !default;
+$sf-pad-right: $link-pad-right !default;
+$sf-caret-pad: 0.75em !default; /* extra space for caret on the right */
+$sf-submenu-min-width: 16em !default;
+$sf-submenu-bg: $site-bgcolor !default; /* make submenu panel fully opaque */
+$sf-submenu-border: 0 !default; /* no outer frame; rely on shadow */
+$sf-submenu-shadow: 0 0.5em 1.25em rgba(0, 0, 0, 0.25) !default;
+
+/* Vertical offsets for dropdowns */
+$sf-submenu-offset-y: 0.35em !default; /* second level: drop below parent */
+$sf-flyout-offset-y: 0.15em !default; /* deeper levels: slight offset */
+
+/* Link colors (match muted text on dark cards) */
+$sf-color: $color-text !default;
+$sf-hover-color: $text-bright !default;
+$sf-active-color: $text-bright !default;
+$sf-bg: $site-bgcolor !default; /* solid card background for top-level */
+$sf-hover-bg: rgba($site-bgcolor, 0.85) !default;
+
+/* Sub-item background colors (solid) */
+$sf-subitem-bg: $sf-submenu-bg !default;
+$sf-subitem-hover-bg: shade($sf-submenu-bg, 6%) !default;
+$sf-subitem-line-height: $sf-link-height * 0.9 !default;
+$sf-active-bg: rgba($color-1, 0.85) !default;
+$sf-border: $stroke-1 solid rgba($color-1, 0.3) !default;
+$sf-hover-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$sf-active-border: $stroke-1 solid rgba($color-1, 0.75) !default;
+
+/* Reset */
+ul.sf-menu.sf-style-dg,
+ul.sf-menu.sf-style-dg * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Top-level container */
+ul.sf-menu.sf-style-dg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sf-gap;
+}
+ul.sf-menu.sf-style-dg > li {
+  position: relative;
+}
+
+/* Links */
+ul.sf-menu.sf-style-dg > li > a,
+ul.sf-menu.sf-style-dg > li > a:visited,
+ul.sf-menu.sf-style-dg > li > span.nolink {
+  @include bodytext;
+  & {
+    display: flex;
+    align-items: center;
+    line-height: $sf-link-height;
+    font-size: $sf-link-font-size-mobile;
+    padding: 0 $sf-pad-right 0 $sf-pad-left;
+    color: $sf-color;
+    /* Force visible card background for top level */
+    background-color: $sf-bg !important;
+    text-decoration: none;
+    border: $sf-border;
+    border-radius: $sf-link-radius;
+    box-sizing: border-box;
+  }
+}
+
+/* Add extra space on the right when a caret is shown */
+ul.sf-menu.sf-style-dg > li > a.sf-with-ul,
+ul.sf-menu.sf-style-dg > li > span.nolink.sf-with-ul {
+  padding-right: calc(#{$sf-pad-right} + #{$sf-caret-pad});
+}
+
+@media (min-width: 768px) {
+  ul.sf-menu.sf-style-dg > li > a,
+  ul.sf-menu.sf-style-dg > li > a:visited,
+  ul.sf-menu.sf-style-dg > li > span.nolink {
+    font-size: $sf-link-font-size-desktop;
+  }
+}
+
+ul.sf-menu.sf-style-dg > li > a:hover,
+ul.sf-menu.sf-style-dg > li > a:focus {
+  color: $sf-hover-color;
+  background-color: $sf-hover-bg;
+  border: $sf-hover-border;
+}
+
+/* Keep hover styling applied while submenu is open (Superfish adds .sfHover to the LI) */
+ul.sf-menu.sf-style-dg > li.sfHover > a,
+ul.sf-menu.sf-style-dg > li.sfHover > a:visited {
+  color: $sf-hover-color;
+  background-color: $sf-hover-bg;
+  border: $sf-hover-border;
+}
+
+ul.sf-menu.sf-style-dg > li > a:active,
+ul.sf-menu.sf-style-dg > li > a.is-active {
+  color: $sf-active-color;
+  background-color: $sf-active-bg;
+  border: $sf-active-border;
+}
+
+/* Submenus */
+ul.sf-menu.sf-style-dg ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+  min-width: $sf-submenu-min-width;
+  display: none;
+  background-color: $sf-submenu-bg;
+  border: $sf-submenu-border;
+  border-radius: $sf-link-radius;
+  box-shadow: $sf-submenu-shadow;
+}
+
+/* Nudge the first dropdown below its parent */
+ul.sf-menu.sf-style-dg > li > ul {
+  top: calc(100% + #{$sf-submenu-offset-y});
+}
+
+/* Second-level links inherit base look */
+ul.sf-menu.sf-style-dg li li > a,
+ul.sf-menu.sf-style-dg li li > a:visited,
+ul.sf-menu.sf-style-dg li li > span.nolink {
+  display: block;
+  color: $sf-color;
+  background-color: $sf-subitem-bg;
+  line-height: $sf-subitem-line-height;
+  padding: 0 $sf-pad-right 0 $sf-pad-left;
+  box-sizing: border-box; /* prevent height shifts on hover */
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: $stroke-1 solid rgba($color-1, 0.35);
+}
+ul.sf-menu.sf-style-dg li li > a.sf-with-ul,
+ul.sf-menu.sf-style-dg li li > span.nolink.sf-with-ul {
+  padding-right: calc(#{$sf-pad-right} + #{$sf-caret-pad});
+}
+ul.sf-menu.sf-style-dg li li:last-child > a,
+ul.sf-menu.sf-style-dg li li:last-child > span.nolink {
+  border-bottom: 0;
+}
+
+/* Show submenus */
+ul.sf-menu.sf-style-dg li:hover > ul,
+ul.sf-menu.sf-style-dg li.sfHover > ul {
+  display: block;
+}
+
+/* Third+ level flyouts */
+ul.sf-menu.sf-style-dg li li ul {
+  top: $sf-flyout-offset-y;
+  left: 100%;
+}
+
+/* RTL adjustments */
+ul.sf-menu.sf-style-dg.rtl li li ul {
+  left: auto;
+  right: 100%;
+}
+
+/* RTL padding correction when caret is on the left side */
+ul.sf-menu.sf-style-dg.rtl > li > a.sf-with-ul,
+ul.sf-menu.sf-style-dg.rtl > li > span.nolink.sf-with-ul,
+ul.sf-menu.sf-style-dg.rtl li li > a.sf-with-ul,
+ul.sf-menu.sf-style-dg.rtl li li > span.nolink.sf-with-ul {
+  padding-left: calc(#{$sf-pad-left} + #{$sf-caret-pad});
+}
+
+/* Caret indicator for parents (pure CSS) */
+ul.sf-menu.sf-style-dg a.sf-with-ul::after,
+ul.sf-menu.sf-style-dg span.nolink.sf-with-ul::after {
+  content: '▾';
+  display: inline-block;
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  line-height: 1;
+}
+ul.sf-menu.sf-style-dg li li > a.sf-with-ul::after,
+ul.sf-menu.sf-style-dg li li > span.nolink.sf-with-ul::after {
+  content: '▸';
+  margin-left: 0.5em;
+}
+ul.sf-menu.sf-style-dg.rtl li li > a.sf-with-ul::after,
+ul.sf-menu.sf-style-dg.rtl li li > span.nolink.sf-with-ul::after {
+  content: '▾';
+}
+
+/* Navbar helper */
+ul.sf-menu.sf-style-dg.sf-navbar {
+  width: 100%;
+}

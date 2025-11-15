@@ -1,0 +1,9 @@
+{# Hero Announcement SDC wrapper: loads partial based on view_mode #}
+
+{{ attach_library('basekit/hero_announcement') }}
+
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/hero_announcement/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/hero_announcement/partials/default.html.twig'
+], { props: props }) }}

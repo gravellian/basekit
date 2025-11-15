@@ -1,0 +1,19 @@
+{% extends "block--block-content.html.twig" %}
+{# Image Slider block delegates rendering to the SDC component.
+   EVA display (block_images_entity_view_1) provides the minimal .block-items
+   wrapper and rows; the component supplies the outer chrome. #}
+
+{% block content %}
+  {% set _vm = block_view_mode|default('default') %}
+  {# EVA attachment key from view config: block_images_entity_view_1 #}
+  {% set _images = content.block_images_entity_view_1 is defined ? content.block_images_entity_view_1|render : '' %}
+
+  {{ include('@basekit/components/image_slider/image_slider.html.twig', {
+    props: {
+      has_label: label ? true : false,
+      label: label,
+      images: _images,
+      view_mode: _vm,
+    }
+  }) }}
+{% endblock %}

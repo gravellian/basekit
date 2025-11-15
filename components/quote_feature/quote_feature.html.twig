@@ -1,0 +1,7 @@
+{{ attach_library('basekit/quote_feature') }}
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/quote_feature/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/quote_feature/partials/default.html.twig'
+], { props: props }) }}
+

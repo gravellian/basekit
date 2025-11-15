@@ -1,0 +1,36 @@
+@use './_tokens';
+@use './base' as *;
+
+@use 'layout';
+@use 'navigation';
+@use 'block';
+@use 'components/button';
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.body-h2 {
+  @include body-h2;
+}
+
+.body-h3 {
+  @include body-h3;
+}
+
+.body-h4 {
+  @include body-h4;
+}
+
+.body-h5 {
+  @include body-h5;
+}
+
+.body-h6 {
+  @include body-h6;
+}
+
+.body-style {
+  @include bodyStyle;
+}

@@ -1,0 +1,10 @@
+{# Media Slider SDC wrapper: loads partial based on view_mode #}
+
+{{ attach_library('basekit/media_slider') }}
+
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/media_slider/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/media_slider/partials/default.html.twig'
+], { props: props }) }}
+

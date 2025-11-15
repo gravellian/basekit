@@ -1,0 +1,21 @@
+{#
+  Field override for block_content:field_block_items
+  - Wraps items in a unified .block-items container
+  - Outputs items without per-item wrappers
+  - Adds bundle-based modifier if available
+#}
+{%
+  set bundle = element['#object'] is defined and element['#object'] ? element['#object'].bundle() : ''
+%}
+{%
+  set classes = [
+    'block-items',
+    bundle ? 'block-items--bundle-' ~ bundle|clean_class
+  ]
+%}
+<div class="{{ classes|join(' ') }}">
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>
+

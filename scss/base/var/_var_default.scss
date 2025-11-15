@@ -1,0 +1,314 @@
+/* variables */
+@use 'sass:color';
+/* layout positioning */
+$m-page-header: 8em !default;
+$d-page-header: 15em !default;
+$siteg: 1.2em !default; /* site gutter width */
+$m-pagep: 1.568em !default; /* mobile horz page padding */
+$d-pagep: 7.568em !default; /* desktop horz page padding */
+$m-pagew: 100% !default; /* mobile page width */
+$d-pagew: 1365px !default; /* desktop page width */
+$pagepad: 2em !default; /* page vert padding */
+$m-page-footer: 5em !default;
+$d-page-footer: 5em !default;
+$m-section-h2-height: 2em !default;
+$d-section-h2-height: 2em !default;
+
+/* brand colors */
+/* Core brand tokens (raw palette) */
+$brand-bg: #635d59 !default; /* background */
+$brand-primary: #d5b35b !default; /* gold - primary brand */
+$brand-accent: #3ea0d8 !default; /* blue - accent */
+$brand-neutral: #a28d7a !default; /* taupe - neutral */
+
+/* Back-compat aliases for existing code paths */
+$color-1: $brand-bg !default; /* background */
+$color-2: $brand-primary !default; /* primary */
+$color-3: $brand-accent !default; /* secondary */
+$color-4: $brand-neutral !default; /* alternative */
+
+/* text */
+/* Establish a base text color, then derive a small ramp from it. */
+$text-base: #f0e5d4 !default; /* brighter base for text */
+/* Tone-based text ramp (blend background INTO text; weight applies to first color) */
+$text-bright: color.mix(
+  $brand-bg,
+  $text-base,
+  0%
+) !default; /* 0% bg, 100% text */
+$text-high: color.mix(
+  $brand-bg,
+  $text-base,
+  15%
+) !default; /* 15% bg, 85% text */
+$text-muted: color.mix(
+  $brand-bg,
+  $text-base,
+  25%
+) !default; /* 25% bg, 75% text */
+$text-subtle: color.mix(
+  $brand-bg,
+  $text-base,
+  35%
+) !default; /* 35% bg, 65% text */
+/* Optional alpha variants when blending is desired */
+$text-muted-alpha: rgba($text-base, 0.75) !default;
+$text-subtle-alpha: rgba($text-base, 0.6) !default;
+/* Choose the sitewide default text role. You can re-point this to any variant. */
+$color-text: $text-muted !default; /* set to any variant (e.g., $text-muted) */
+
+/* Minimal tonal helpers */
+/* Note: weight is percentage of the second color in color.mix().
+   Define helpers so $p means "add $p of white/black to $c". */
+@function tint($c, $p) {
+  @return color.mix($c, white, $p);
+}
+@function shade($c, $p) {
+  @return color.mix($c, black, $p);
+}
+
+/* Small ramps per brand */
+$primary-light: tint($brand-primary, 18%) !default;
+$primary-dark: shade($brand-primary, 18%) !default;
+
+$accent-light: tint($brand-accent, 18%) !default;
+$accent-dark: shade($brand-accent, 18%) !default;
+
+$neutral-light: tint($brand-neutral, 14%) !default;
+$neutral-dark: shade($brand-neutral, 14%) !default;
+
+/* Surfaces */
+$surface-0: $brand-bg !default; /* page bg */
+$surface-1: tint($brand-bg, 6%) !default; /* cards/blocks */
+$surface-2: tint($brand-bg, 10%) !default; /* elevated */
+
+/* Borders and rules */
+$rule: rgba($brand-neutral, 0.5) !default; /* hr/underlines */
+$border: rgba($brand-neutral, 0.35) !default; /* control borders */
+
+/* Focus & selection */
+$focus-ring: rgba($brand-accent, 0.85) !default;
+$selection: rgba($brand-accent, 0.25) !default;
+
+/* Link role tokens (defined after strokes) */
+/* moved below to ensure $stroke-* is defined */
+/* suporting colors */
+$gray: #959595 !default; /* neutral gray */
+$gray-dark: #6d6863 !default; /* darker gray */
+$white: #ffffff !default; /* white */
+$red: #fc6969 !default; /* red - warning */
+$teal: rgb(5, 231, 231) !default; /* teal - info */
+$orange: #e4af00 !default; /* orange - alert */
+$violet: #c512e1 !default; /* violet - error */
+$green: #b4dc7f !default; /* green - tips */
+$yellow: #f0d27b !default; /* yellow - notes */
+$black: #000000 !default; /* black */
+
+/* map to existing heading roles */
+$color-h1: $brand-primary !default;
+$color-h2: $brand-accent !default;
+$color-h3: $brand-neutral !default;
+
+$font-heading: 'Archivo', sans-serif !default; /* heading font */
+$font-heading-narrow:
+  'Archivo Narrow', sans-serif !default; /* heading narrow font */
+$font-body: 'Roboto', sans-serif !default; /* body font */
+
+/* fonts */
+/* body */
+$font-weight-body: 300 !default; /* Inter Regular becomes Normal */
+$font-weight-body-light: 200 !default; /* Inter ExtraLight */
+$font-weight-body-medium: 400 !default; /* Inter Medium becomes Medium */
+$font-size-body: 1.7em !default;
+$line-height-body: 1.35em !default;
+
+/* headings */
+$font-size-small: $font-size-body * 0.9 !default;
+/* h1 */
+$font-weight-h1: 800 !default; /* Poppins bold for headings */
+$font-size-h1: $font-size-body * 2.25 !default;
+$line-height-h1: 1.1em !default;
+$color-h1: $color-2 !default;
+/* h2 */
+$font-weight-h2: 500 !default; /* lighter than regular for better balance */
+$font-size-h2: $font-size-body * 1.9 !default;
+$line-height-h2: 1.15em !default;
+$color-h2: $brand-accent !default; /* h2 accent */
+/* h3 */
+$font-weight-h3: 700 !default;
+$font-size-h3: $font-size-body * 1.2 !default;
+$line-height-h3: 1.15em !default;
+$color-h3: $brand-neutral !default;
+/* h4 */
+$font-weight-h4: 500 !default;
+$font-size-h4: $font-size-body * 1.1 !default;
+$line-height-h4: 1.15em !default;
+$color-h4: $color-1;
+/* h5 */
+$font-weight-h5: 100 !default;
+$font-size-h5: $font-size-body * 1.05 !default;
+$line-height-h5: 1.15em !default;
+$color-h5: $color-1;
+/* h6 */
+$font-weight-h6: 100 !default;
+$font-size-h6: $font-size-body * 0.95 !default;
+$line-height-h6: 1.15em !default;
+$color-h6: $color-1;
+
+/* stroke */
+$stroke-1: 0.025em !default;
+$stroke-2: 0.075em !default;
+$stroke-3: 0.01em !default;
+
+/* border */
+$border-light: 0.05em solid #ccc !default;
+$border-dark: 0.1em solid #333 !default;
+
+/* body and page */
+$site-bgcolor: #4f4a47 !default; /* site body background color */
+$page-bgcolor: #635d59 !default; /* site page content background color */
+$body-align: center !default; /* align all content in the site body */
+$page-align: left !default; /* align the page content */
+
+/* sections */
+$section-bgcolor: $color-2 !default;
+
+/* blocks */
+$block-bgcolor: transparent !default;
+$block-pad-top: 2em !default;
+$block-pad-right: 2em !default;
+$block-pad-bottom: 2em !default;
+$block-pad-left: 2em !default;
+$block-border-radius: $siteg * 0.25 !default;
+$block-pad: $block-pad-top $block-pad-right $block-pad-bottom $block-pad-left !default;
+
+/* nav variables */
+$nav-align: center !default;
+$link-pad-top: 1em !default;
+$link-pad-right: 1em !default;
+$link-pad-bottom: 1em !default;
+$link-pad-left: 1em !default;
+$link-pad: $link-pad-top $link-pad-right $link-pad-bottom $link-pad-left !default;
+$m-link-size: 1.05em !default;
+$d-link-size: 1.05em !default;
+$link-height: 3em !default;
+$link-space: 0.25em !default;
+$d-link-space: 0.25em !default;
+$link-radius: 0.25em !default;
+
+/* default menu links */
+
+/* menu links - link color */
+$link-color: $color-2 !default;
+$link-hover-color: $white !default;
+$link-click-color: $color-1 !default;
+$link-border: $stroke-1 solid rgba($color-1, 0.3) !default;
+
+/* menu links - background color */
+$link-bgcolor: rgba(transparent, 0) !default;
+$link-hover-bgcolor: rgba($site-bgcolor, 0.5) !default;
+$link-click-bgcolor: rgba($color-1, 0.3) !default;
+
+/* menu links - border weight, stroke and color */
+$link-border: $stroke-1 solid rgba($color-3, 0.5) !default;
+$link-hover-border: $stroke-1 solid rgba($color-1, 0.75) !default;
+$link-click-border: $stroke-1 solid rgba($color-1, 1) !default;
+
+/* active menu links */
+
+/* active menu links - active item link color */
+$link-isactive-color: $white !default;
+$link-isactive-hover-color: $white !default;
+$link-isactive-click-color: $color-1 !default;
+
+/* active menu links - active item background color */
+$link-isactive-bgcolor: $color-2 !default;
+$link-isactive-hover-bgcolor: $color-2 !default;
+$link-isactive-click-bgcolor: rgba($color-1, 0.2) !default;
+
+/* active menu links - active item border color */
+$link-isactive-border: $stroke-1 solid rgba(transparent, 0) !default;
+$link-isactive-hover-border: $stroke-1 solid rgba(transparent, 0) !default;
+$link-isactive-click-border: $stroke-1 solid $white !default;
+
+/* table variables */
+$td-bg: green;
+
+/******************/
+/* form variables */
+/******************/
+$form-pad: 1em !default;
+$form-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+
+/* admin table variables */
+$form-td-pad: 1em !default;
+$form-td-border: $stroke-2 solid rgba($color-1, 0.5) !default;
+$form-td-bg: rgba(transparent, 0) !default;
+$form-td-bg2: rgba($color-1, 0.05) !default;
+
+/* wraps around form items */
+$form-wrap-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$form-wrap-pad: $siteg * 0.25 !default;
+$form-wrap-bgcolor: rgba($color-1, 0.05) !default;
+$form-summary-size: 1.1em !default;
+
+/* form-items */
+$form-item-pad: 1.25em !default;
+$form-item-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$form-item-after: 3em !default;
+/* form item labels */
+$form-label-size: 1.1em !default;
+
+/* form text inputs */
+$form-input-border: 1px solid rgba($site-bgcolor, 0.5) !default;
+$form-input-pad: 0.75em 0.5em !default;
+$form-input-color: $color-1;
+$form-input-size: $font-size-body !default;
+$form-input-bgcolor: $site-bgcolor !default;
+
+/* form select fields */
+$form-select-pad: 0.75em 1.5em 0.75em 0.75em;
+$form-select-bgcolor: $form-input-bgcolor;
+$form-select-border: $form-input-border;
+$form-select-size: $form-input-size;
+
+/* buttons */
+$button-size: $font-size-body * 0.75 !default;
+$button-height: 1.85em !default;
+$button-pad-top: 0 !default;
+$button-pad-right: 0.75em !default;
+$button-pad-bottom: 0 !default;
+$button-pad-left: 0.75em !default;
+$button-pad: $button-pad-top $button-pad-right $button-pad-bottom
+  $button-pad-left;
+$button-radius: 0.25em !default;
+/* button colors */
+$button-color: $white !default;
+$button-bgcolor: $color-2 !default;
+$button-border: $stroke-1 solid rgba(transparent, 0) !default;
+/* button - hover */
+$button-hover-color: $white !default;
+$button-hover-bgcolor: rgba($color-1, 0.5) !default;
+$button-hover-border: $button-border !default;
+/* button - click */
+$button-click-color: $site-bgcolor !default;
+$button-click-bgcolor: $color-1 !default;
+$button-click-border: $stroke-1 solid rgba($color-2, 1) !default;
+/* button - active */
+$button-active-color: $color-2;
+$button-active-bgcolor: $color-2 !default;
+$button-active-border: $stroke-1 solid $color-2 !default;
+
+/* https://base64.guru/converter/encode/image/svg */
+
+$page-image-custom: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDAgNTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0JGQUU0MTt9Cgkuc3Qxe3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjE1NzQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQo8L3N0eWxlPgo8Zz4KCTxwYXRoIGQ9Ik0zNDUuNSwwaC0zMTV2NTAwaDQzOVYxMjRMMzQ1LjUsMHogTTQ0MC41LDQ3MWgtMzgxVjI5aDI3NGwxMiwxMnY4M2g4M2wxMiwxMlY0NzF6Ii8+Cgk8cmVjdCB4PSIxMjUiIHk9IjI1MS4yIiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgoJPHJlY3QgeD0iMTI1LjUiIHk9IjMxMy4zIiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgoJPHJlY3QgeD0iMTI1LjUiIHk9IjM3NS41IiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgo8L2c+Cjwvc3ZnPgo=');
+
+$page-image-config: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDAgNTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0JGQUU0MTt9Cgkuc3Qxe3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjE1NzQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQo8L3N0eWxlPgo8Zz4KCTxwYXRoIGQ9Ik0zNDUuNSwwaC0zMTV2NTAwaDQzOVYxMjRMMzQ1LjUsMHogTTQ0MC41LDQ3MWgtMzgxVjI5aDI3NGwxMiwxMnY4M2g4M2wxMiwxMlY0NzF6Ii8+Cgk8cmVjdCB4PSIxMjUiIHk9IjI1MS4yIiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgoJPHJlY3QgeD0iMTI1LjUiIHk9IjMxMy4zIiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgoJPHJlY3QgeD0iMTI1LjUiIHk9IjM3NS41IiB3aWR0aD0iMjQ5LjUiIGhlaWdodD0iMjguNiIvPgo8L2c+CjxwYXRoIGQ9Ik0yNTMuMSwxMjQuMUgxMzcuOGMtNywwLTEyLjgsNS43LTEyLjgsMTIuOHY3OC43YzAsNyw1LjcsMTIuOCwxMi44LDEyLjhoMTE1LjRjNywwLDEyLjgtNS43LDEyLjgtMTIuOHYtNzguNwoJQzI2NS45LDEyOS45LDI2MC4yLDEyNC4xLDI1My4xLDEyNC4xeiBNMjExLjIsMjA3LjNoLTMxLjRsMTAuMi0zMS4yYy01LjktMi4yLTEwLjItOC0xMC4yLTE0LjdjMC04LjcsNy0xNS43LDE1LjctMTUuNwoJczE1LjcsNywxNS43LDE1LjdjMCw2LjktNC40LDEyLjctMTAuNiwxNC44TDIxMS4yLDIwNy4zeiIvPgo8L3N2Zz4K');
+
+$page-image-article: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDAgNTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0JGQUU0MTt9Cgkuc3Qxe3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjE1NzQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQo8L3N0eWxlPgo8Zz4KCTxwYXRoIGQ9Ik0zNDUuNSwwaC0zMTV2NTAwaDQzOVYxMjRMMzQ1LjUsMHogTTQ0MC41LDQ3MWgtMzgxVjI5aDI3NGwxMiwxMnY4M2g4M2wxMiwxMlY0NzF6Ii8+Cgk8cmVjdCB4PSIxMjUuNSIgeT0iMzEzLjMiIHdpZHRoPSIyNDkuNSIgaGVpZ2h0PSIyOC42Ii8+Cgk8cmVjdCB4PSIxMjUuNSIgeT0iMzc1LjUiIHdpZHRoPSIyNDkuNSIgaGVpZ2h0PSIyOC42Ii8+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjQ2LjYsMjYyLjR2LTEwLjJWMTQ2LjF2LTEwLjJjMC0zLjgtMi42LTYuOS01LjgtNi45aC0zLjZjLTMuMiwwLTUuOCwzLjEtNS44LDYuOXY1LjVsLTU5LjUsMTBjLTMuMywwLjYtNiw0LjMtNiw4LjMKCQkJdjc4LjljMCw0LDIuNyw3LjcsNiw4LjNsNTkuNSwxMHY1LjVjMCwzLjgsMi42LDYuOSw1LjgsNi45aDMuNkMyNDQsMjY5LjMsMjQ2LjYsMjY2LjIsMjQ2LjYsMjYyLjR6Ii8+CgkJPHBhdGggZD0iTTEzOC45LDE1My44Yy0xMC41LDAtMTksMTAuMi0xOSwyMi42djQ1LjNjMCwxMi41LDguNiwyMi42LDE5LDIyLjZoMTUuMnYtOTAuNUgxMzguOXoiLz4KCTwvZz4KCTxwYXRoIGQ9Ik0yOTYsMjA4LjFoLTE5LjhjLTUsMC05LTQtOS05czQtOSw5LTlIMjk2YzUsMCw5LDQsOSw5UzMwMC45LDIwOC4xLDI5NiwyMDguMXoiLz4KCTxwYXRoIGQ9Ik0yNjkuMiwxNjVjLTMuNSwwLTYuOC0yLTguMy01LjRjLTItNC42LDAuMS05LjksNC43LTExLjhsMTguNi04LjFjNC42LTIsOS45LDAuMSwxMS44LDQuN2MyLDQuNi0wLjEsOS45LTQuNywxMS44CgkJbC0xOC42LDguMUMyNzEuNiwxNjQuNywyNzAuNCwxNjUsMjY5LjIsMTY1eiIvPgoJPHBhdGggZD0iTTI4Ny44LDI1OS4zYy0xLjIsMC0yLjQtMC4yLTMuNi0wLjdsLTE4LjYtOC4xYy00LjYtMi02LjctNy4zLTQuNy0xMS44YzItNC42LDcuMy02LjcsMTEuOC00LjdsMTguNiw4LjEKCQljNC42LDIsNi43LDcuMyw0LjcsMTEuOEMyOTQuNSwyNTcuMywyOTEuMiwyNTkuMywyODcuOCwyNTkuM3oiLz4KPC9nPgo8L3N2Zz4K');
+
+$default-image-1x1: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyODhweCIgaGVpZ2h0PSIyODhweCIgdmlld0JveD0iMCAwIDI4OCAyODgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI4OCAyODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZD0iTTAsMHYyODhoMjg4di01LjV2LTEwLjNWMEgweiBNMTk0LjYsMTc4LjRsLTQzLjksMzkuN2wtNTcuOS03MS41TDI3LDIzNi40VjI3LjNoMjMzLjl2MjE3LjlMMTk0LjYsMTc4LjR6Ii8+CjxjaXJjbGUgY3g9IjE5MS4zIiBjeT0iMTA2LjEiIHI9IjIyLjciLz4KPC9zdmc+Cg==');
+
+$default-profile-1x1: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyMTZweCIgaGVpZ2h0PSIyMTZweCIgdmlld0JveD0iMCAwIDIxNiAyMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIxNiAyMTY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojMjMxRjIwO30KPC9zdHlsZT4KPGc+Cgk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTA4LDkuN2M1NC4yLDAsOTguMyw0NC4xLDk4LjMsOTguM3MtNDQuMSw5OC4zLTk4LjMsOTguM1M5LjcsMTYyLjIsOS43LDEwOFM1My44LDkuNywxMDgsOS43IE0xMDgsMAoJCUM0OC40LDAsMCw0OC40LDAsMTA4czQ4LjQsMTA4LDEwOCwxMDhzMTA4LTQ4LjQsMTA4LTEwOFMxNjcuNiwwLDEwOCwwTDEwOCwweiIvPgo8L2c+CjxnPgoJPGNpcmNsZSBjbGFzcz0ic3QwIiBjeD0iMTA4IiBjeT0iMTAwLjYiIHI9IjM0Ii8+CjwvZz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTEwOCwyMDMuOWMyNi4zLDAsNTAuMS0xMC42LDY3LjQtMjcuN2MtMTEuMS0xNy43LTI2LjktMzEtNDUtMzdjLTYuNiwzLjgtMTQuMiw2LTIyLjQsNgoJYy04LjEsMC0xNS44LTIuMi0yMi40LTZjLTE4LjIsNi0zMy45LDE5LjMtNDUsMzdDNTcuOSwxOTMuNCw4MS43LDIwMy45LDEwOCwyMDMuOXoiLz4KPC9zdmc+Cg==');
+
+$notice: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjAgMjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkZGRkZGO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTEwLDBDNC41LDAsMCw0LjUsMCwxMHM0LjUsMTAsMTAsMTBzMTAtNC41LDEwLTEwUzE1LjUsMCwxMCwweiBNMTEsMTZIOXYtMmgyVjE2eiBNMTEsMTJIOVY0aDJWMTJ6Ii8+Cjwvc3ZnPgo=');

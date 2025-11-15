@@ -1,0 +1,52 @@
+// -------------------------------------
+// Load Effects (for use with .block.load-effect.*)
+// -------------------------------------
+
+// Mixin: Fade + translate upward
+@mixin fade-in-up($duration: 0.6s, $distance: 30px) {
+  opacity: 0;
+  transform: translateY($distance);
+  transition: opacity $duration ease, transform $duration ease;
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mixin: Zoom pop
+@mixin zoom-pop($duration: 0.5s, $scale: 0.9) {
+  opacity: 0;
+  transform: scale($scale);
+  transition: transform $duration ease, opacity $duration ease;
+  will-change: transform, opacity;
+
+  &.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Mixin: Blur in
+@mixin blur-in($duration: 0.8s, $blur: 10px) {
+  opacity: 0;
+  filter: blur($blur);
+  transition: opacity $duration ease, filter $duration ease;
+  will-change: opacity, filter;
+
+  &.is-visible {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+// ♿ Mixin: Respect reduced motion
+@mixin reduced-motion-reset {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}

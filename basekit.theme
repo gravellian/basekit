@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks and preprocess functions for BaseKit.
+ */
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * When the Main navigation menu block is placed in the `sidebar_first` region,
+ * switch the inner menu theme suggestion to a Pushy-specific template so that
+ * only the drawer instance gets the collapsible submenu markup.
+ */
+function basekit_preprocess_block(array &$variables) {
+  $region = $variables['region'] ?? ($variables['elements']['#region'] ?? NULL);
+  $base_plugin_id = $variables['base_plugin_id'] ?? ($variables['elements']['#base_plugin_id'] ?? NULL);
+
+  // Apply to ANY core menu block rendered in the sidebar_first region.
+  if ($region === 'sidebar_first' && $base_plugin_id === 'system_menu_block') {
+    // Recursively locate the menu render array and retarget its theme to
+    // menu__pushy so only the drawer uses Pushy submenu markup.
+    _basekit_switch_menu_theme($variables['content']);
+  }
+
+  // Expose view mode for custom block content to Twig.
+  if (!empty($variables['content']) && isset($variables['elements']['#base_plugin_id']) && $variables['elements']['#base_plugin_id'] === 'block_content') {
+    // Try to read the rendered entity view mode from the content render array.
+    $view_mode = $variables['elements']['content']['#view_mode'] ?? 'default';
+    $variables['block_view_mode'] = $view_mode;
+
+    // Expose the custom block bundle to Twig for standardized classes.
+    // The block content entity is typically available on the content render
+    // array as #block_content when rendered via the entity view builder.
+    $block_content = $variables['elements']['content']['#block_content'] ?? NULL;
+    if (is_object($block_content) && method_exists($block_content, 'bundle')) {
+      $variables['block_bundle'] = $block_content->bundle();
+    }
+  }
+}
+
+/**
+ * Walk the render array and switch the first menu theme to `menu__pushy`.
+ */
+function _basekit_switch_menu_theme(&$element) {
+  if (!is_array($element)) {
+    return FALSE;
+  }
+  if (!empty($element['#theme']) && ($element['#theme'] === 'menu' || strpos($element['#theme'], 'menu__') === 0)) {
+    $element['#theme'] = 'menu__pushy';
+    return TRUE;
+  }
+  foreach ($element as &$child) {
+    if (_basekit_switch_menu_theme($child)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_theme_suggestions_paragraph_alter().
+ *
+ * Add a minimal "bare" paragraph template when a paragraph is rendered
+ * inside block_content's field_block_items, allowing unified grid markup.
+ */
+function basekit_theme_suggestions_paragraph_alter(array &$suggestions, array $variables) {
+  // The originating field name is exposed on the element.
+  $field_name = $variables['elements']['#field_name'] ?? NULL;
+  // Parent entity type is set by Paragraphs module when known.
+  $parent_type = $variables['elements']['#parent_entity_type'] ?? NULL;
+
+  if ($field_name === 'field_block_items' && $parent_type === 'block_content') {
+    $suggestions[] = 'paragraph__bare';
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ *
+ * When an EVA display (entity_view) targets block_content, switch to a
+ * simplified wrapper and expose utility variables/classes for Twig.
+ */
+function basekit_preprocess_views_view_unformatted(array &$variables) {
+  $view = $variables['view'] ?? NULL;
+  if (!$view || !isset($view->display_handler)) {
+    return;
+  }
+
+  // Only act on EVA displays rendering entities.
+  $display_plugin = $view->display_handler->getPluginId();
+  if ($display_plugin !== 'entity_view') {
+    return;
+  }
+
+  // Check that this EVA is configured for block_content.
+  $entity_type = $view->display_handler->getOption('entity_type');
+  if ($entity_type !== 'block_content') {
+    return;
+  }
+
+  // Flag for Twig and add a custom suggestion for clarity.
+  $variables['is_block_items'] = TRUE;
+  $classes = ['block-items'];
+  $classes[] = 'block-items--view-' . $view->id();
+  $variables['block_items_classes'] = $classes;
+
+  // Add a targeted suggestion name to use a minimal wrapper template.
+  $variables['theme_hook_suggestions'][] = 'views_view_unformatted__eva_block_items';
+}

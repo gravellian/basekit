@@ -1,0 +1,22 @@
+name: 'Image Slider'
+description: 'Multiple-image slider component used by the image_slider custom block.'
+status: stable
+template: image_slider
+library: basekit/image_slider
+props:
+  type: object
+  properties:
+    view_mode:
+      type: string
+      default: 'default'
+      description: 'View mode key (default, main_100_16x9, main_100_21x9).'
+    has_label:
+      type: boolean
+      default: false
+    label:
+      type: string
+      description: 'Block title/label.'
+    images:
+      type: string
+      description: 'Rendered Swiper markup for the images field.'
+

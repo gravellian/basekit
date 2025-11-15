@@ -1,0 +1,10 @@
+{# Image Slider SDC wrapper: loads partial based on view_mode #}
+
+{{ attach_library('basekit/image_slider') }}
+
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/image_slider/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/image_slider/partials/default.html.twig'
+], { props: props }) }}
+

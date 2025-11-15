@@ -1,0 +1,84 @@
+/* Off-canvas menu (sidebar_first) */
+
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80vw;
+  max-width: 360px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1001;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* Menu slides in from the right */
+.offcanvas-menu.is-active {
+  transform: translateX(0);
+}
+
+/* Overlay that appears behind the menu */
+.site-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+/* When overlay is active */
+.site-overlay.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* Optional: prevent background scroll when menu is open */
+body.menu-open {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80vw;
+  max-width: 360px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1001;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.offcanvas-menu.is-active {
+  transform: translateX(0);
+}
+
+.site-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.site-overlay.is-active {
+  display: block;
+  opacity: 1;
+}
+
+body.menu-open {
+  overflow: hidden;
+}

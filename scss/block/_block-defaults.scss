@@ -1,0 +1,117 @@
+@use '../base' as *;
+
+/* customize block apearance in certains sections (regions) and use classes to adjust blocks */
+
+/* also includes styles for paragraphs */
+.block,
+.paragraph {
+  background-color: rgba($block-bgcolor, 0);
+  clear: both;
+  position: relative;
+  /* begin nested default block styles */
+
+  /* linked content provides feedback when hovered */
+  &.linked {
+    /* linked styles */
+    border: $stroke-1 solid rgba($gray, 1);
+    &:hover {
+      /* style for linked blocks */
+      border-color: rgba($color-2, 1);
+    }
+    &:active {
+      border-color: rgba($color-3, 1);
+    }
+    /* linked styles */
+  }
+  /* /end nested default block styles */
+}
+
+.block.layout-builder-block {
+  border: $stroke-1 solid rgba($color-1, 1);
+  margin-bottom: 1em !important;
+  /* add a border by default for the layout builder */
+}
+
+.block.wide {
+  margin-right: -$m-pagep;
+  margin-left: -$m-pagep;
+  padding-right: $m-pagep;
+  padding-left: $m-pagep;
+  border-left: 0;
+  border-right: 0;
+  @include desktop-small {
+    margin-right: -$d-pagep;
+    margin-left: -$d-pagep;
+    padding-right: $d-pagep;
+    padding-left: $d-pagep;
+  }
+}
+
+.block .display-link {
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.page-content .block.page-title-block {
+  /* remove padding to fill space */
+  margin-bottom: 0;
+  padding-right: 0;
+  @include desktop-small {
+    padding-right: 1em;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .page-content .block.page-title {
+    /* remove padding to fill space */
+    padding-right: 1em;
+  }
+  /* /desktop */
+}
+
+.block.wide.full {
+  /* remove padding to fill space */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.block.start,
+.page-content .block.start {
+  /* remove margin beneath stop items */
+  margin-top: -$pagepad;
+}
+
+.block.stop,
+.page-content .block.stop {
+  /* remove margin beneath stop items */
+  margin-bottom: 0;
+}
+
+.block.end,
+.page-content .block.end {
+  /* negative margin beneath end items */
+  margin-bottom: -$pagepad;
+}
+
+/* speialized links to edit custom blocks from the frontend if permission is granted */
+
+a.block-edit {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+  z-index: 5;
+  opacity: 0.5;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+a.block-edit:hover {
+  opacity: 2;
+  text-decoration: underline;
+  color: $color-1;
+}

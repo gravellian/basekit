@@ -1,0 +1,14 @@
+@use '../base' as *;
+
+/* Unified grid for block items (paragraphs and EVA output) */
+.block-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $siteg;
+  // & > * {
+  //   border: 1px solid $white;
+  // }
+  @include desktop-small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

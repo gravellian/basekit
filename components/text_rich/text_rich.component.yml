@@ -1,0 +1,16 @@
+name: 'Text (rich)'
+description: 'Rich text component with optional media and link.'
+status: stable
+template: text_rich
+library: basekit/text_rich
+props:
+  type: object
+  properties:
+    view_mode: { type: string, default: 'default' }
+    has_label: { type: boolean, default: false }
+    label: { type: string }
+    text: { type: string }
+    url: { type: string }
+    link_title: { type: string }
+    image: { type: string }
+

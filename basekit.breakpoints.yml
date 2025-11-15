@@ -1,0 +1,30 @@
+basekit.handheld:
+  label: handheld
+  mediaQuery: 'all and (max-width: 767px) and (min-width: 1px)'
+  weight: 0
+  multipliers:
+      - 1x
+basekit.desktop-small:
+  label: desktop-small
+  mediaQuery: 'all and (max-width: 1023px) and (min-width: 768px)'
+  weight: 1
+  multipliers:
+      - 1x
+basekit.desktop-medium:
+  label: desktop-medium
+  mediaQuery: 'all and (max-width: 1364px) and (min-width: 1024px)'
+  weight: 2
+  multipliers:
+      - 1x
+basekit.desktop-large:
+  label: desktop-large
+  mediaQuery: 'all and (max-width: 1919px) and (min-width: 1365px)'
+  weight: 3
+  multipliers:
+      - 1x
+basekit.desktop-max:
+  label: desktop-max
+  mediaQuery: 'all and (min-width: 1920px)'
+  weight: 4
+  multipliers:
+      - 1x

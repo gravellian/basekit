@@ -1,0 +1,13 @@
+{#
+  Minimal unformatted view for EVA displays attached to block_content.
+  Expects preprocess to set:
+    - is_block_items: TRUE
+    - block_items_classes: array of class names (includes 'block-items')
+#}
+{% set classes = block_items_classes is defined and block_items_classes ? block_items_classes : ['block-items'] %}
+<div class="{{ classes|join(' ') }}">
+  {% for row in rows %}
+    {{- row.content -}}
+  {% endfor %}
+</div>
+

@@ -1,0 +1,248 @@
+@use '../base' as *;
+
+/********************/
+/* site formatting for handheld sites */
+/********************/
+
+/* layout formatting */
+
+html {
+}
+
+body {
+  font-weight: $font-weight-body;
+  font-family: $font-body;
+  background-color: rgba($site-bgcolor, 1);
+  color: $color-text;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+ul,
+ol,
+li {
+  font-weight: normal;
+}
+
+a:link,
+a:visited {
+  color: $color-text;
+}
+
+a:hover {
+  color: inherit;
+}
+
+strong {
+  font-weight: 700;
+}
+
+pre {
+  /* unset normalize to set for geshifilter */
+  font-size: unset;
+}
+
+/* define table styles for tables that appear in content */
+.cke_editable table,
+.region-content table,
+table.responsive-enabled,
+table.views-table {
+  width: 100%;
+  /* nested */
+
+  tr {
+  }
+
+  th,
+  td {
+    border: $stroke-1 solid $color-1;
+    padding: 0.5em;
+    font-size: $font-size-body * 0.8;
+  }
+
+  th {
+    background-color: rgba($color-1, 0.15);
+    text-align: left;
+    font-weight: normal;
+  }
+
+  td {
+  }
+
+  tr:nth-child(even) td {
+    background-color: rgba($gray, 0.15);
+  }
+
+  /* /end - nested content table styles */
+}
+
+div.geshifilter {
+  margin: 0;
+  border: none;
+  overflow: auto;
+  font-size: $font-size-body * 0.8;
+  /* custom */
+  padding: 1em;
+  border-radius: 0.25em;
+  -webkit-border-radius: 1em;
+  background-color: rgba($site-bgcolor, 0.85);
+}
+
+/* style preformatted code blocks with geshi */
+div.geshifilter pre {
+  overflow: hidden;
+}
+
+/* unset table styles within geshifilter */
+.geshifilter table th,
+.geshifilter table td {
+  border: unset;
+  padding: unset;
+  font-size: unset;
+}
+
+#container {
+  /* this is the page container */
+  box-shadow: 0 0 0.75em rgba($black, 0.25);
+  background-color: $page-bgcolor;
+}
+
+.page-header {
+  border-bottom: $stroke-2 solid rgba($color-2, 1);
+  background-color: $page-bgcolor;
+}
+
+.page-main {
+}
+
+.page-main main.main-wrapper {
+}
+
+#block-mainpagecontent {
+}
+
+.utility-belt {
+  background-color: rgba($color-1, 0.05);
+  border-bottom: $stroke-1 solid rgba($color-1, 0.8);
+}
+
+.mgr-links {
+}
+
+.page-footer {
+  border-top: $stroke-2 solid rgba($color-2, 1);
+  padding-top: 4em;
+  padding-bottom: 4em;
+  text-align: center;
+  background-color: $page-bgcolor;
+}
+
+/* /layout formatting */
+.page-title {
+  /* wrap all h1s in page-title class */
+  /* Use the h1 color (gold) on the page title element itself to match example site */
+  color: $color-h1;
+  border-bottom: $stroke-2 solid $rule;
+  margin-bottom: 1em;
+}
+
+h1 {
+  /* font */
+  font-family: $font-heading;
+  margin-top: 0;
+  font-weight: $font-weight-h1;
+  font-size: $font-size-h1;
+  color: $color-h1;
+  line-height: $line-height-h1;
+  text-align: left;
+  letter-spacing: -0.025em;
+  word-break: break-word;
+  padding: 0.5em 0 0.25em 0;
+  margin-bottom: 0;
+
+  @include desktop-small {
+    font-size: $font-size-h1;
+    padding: 0.5em 2.4em 0.25em 0;
+  }
+}
+
+h1 a:link,
+h1 a:visited {
+  color: $color-1;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  text-decoration: underline;
+}
+
+h1 .highlight {
+  color: $color-2;
+}
+
+h1 .name {
+  color: $color-2;
+  display: block;
+}
+
+.block.page-title.wsubtext h1 {
+}
+
+.block.page-title.wsubtext p {
+  text-align: center;
+  font-style: italic;
+  font-size: $font-size-body;
+  color: rgba($gray, 1);
+  line-height: 1em;
+  padding-bottom: 1em;
+  margin-top: -1em;
+  margin-bottom: 0.25em;
+}
+
+h2.pane-title {
+}
+
+.block.section-header,
+.section-header {
+  margin-bottom: 0;
+}
+
+.block.section-header h2,
+.section-header h2 {
+}
+
+.block.section-header h2 a:link,
+.block.section-header h2 a:visited,
+.section-header h2 a:link,
+.section-header h2 a:visited {
+}
+
+.block.section-header h2 a:hover,
+.section-header h2 a:hover {
+}
+
+h2 {
+  @include body-h2;
+}
+
+h3 {
+  @include body-h3;
+}
+
+h4 {
+  @include body-h4;
+}
+
+h5 {
+  @include body-h5;
+}
+
+h6 {
+  @include body-h6;
+}

@@ -1,0 +1,7 @@
+{{ attach_library('basekit/media_text') }}
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/media_text/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/media_text/partials/default.html.twig'
+], { props: props }) }}
+

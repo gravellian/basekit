@@ -1,0 +1,7 @@
+{{ attach_library('basekit/text_rich') }}
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/text_rich/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/text_rich/partials/default.html.twig'
+], { props: props }) }}
+

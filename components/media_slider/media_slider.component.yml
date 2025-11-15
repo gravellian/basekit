@@ -1,0 +1,21 @@
+name: 'Media Slider'
+description: 'Multiple-image slider component used by the media_slider custom block.'
+status: stable
+template: media_slider
+library: basekit/media_slider
+props:
+  type: object
+  properties:
+    view_mode:
+      type: string
+      default: 'default'
+      description: 'View mode key (default, main_100_16x9, main_100_21x9).'
+    has_label:
+      type: boolean
+      default: false
+    label:
+      type: string
+      description: 'Block title/label.'
+    media:
+      type: string
+      description: 'Rendered Swiper markup for the media field.'

@@ -1,0 +1,7 @@
+{{ attach_library('basekit/hero_headline') }}
+{% set vm = props.view_mode|default('default') %}
+{{ include([
+  '@basekit/components/hero_headline/partials/' ~ vm ~ '.html.twig',
+  '@basekit/components/hero_headline/partials/default.html.twig'
+], { props: props }) }}
+

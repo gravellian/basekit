@@ -1,0 +1,10 @@
+{% extends "block--block-content.html.twig" %}
+{# Simplified template for grid_topics; render unified .block-items directly #}
+
+{% block content %}
+  {{ attach_library('basekit/grid_topics') }}
+  {# Output only the items field; field template provides .block-items wrapper #}
+  {% if content.field_block_items is defined %}
+    {{ content.field_block_items|render }}
+  {% endif %}
+{% endblock %}

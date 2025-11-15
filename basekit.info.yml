@@ -1,0 +1,43 @@
+name: BaseKit
+type: theme
+'base theme': stable9
+version: 1.0.0
+regions:
+  header: Header
+  show: Slideshow
+  manage: Manage
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  title: Title
+  actions: Page actions
+  content: Content
+  sidebar_first: Sidebar first
+  sidebar_second: Sidebar second
+  footer: Footer
+libraries:
+  - basekit/base
+  - basekit/messages
+  - basekit/pushy
+  - basekit/fonts.typography
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - basekit/user
+  core/drupal.dropbutton:
+    - basekit/dropbutton
+  core/drupal.dialog:
+    - basekit/dialog
+  file/drupal.file:
+    - basekit/file
+  core/drupal.progress:
+    - basekit/progress
+  core/drupal.tablesort:
+    - basekit/drupal.tablesort
+# Prevent double-loading of base theme CSS/JS. The sub-theme (basekit)
+# provides its own compiled assets and components.
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.2.2'
+ckeditor5-stylesheets:
+  - css/editor-styles.css

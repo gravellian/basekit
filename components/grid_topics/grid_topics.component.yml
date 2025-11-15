@@ -1,0 +1,17 @@
+name: 'Grid Topics'
+description: 'Grid of topic items.'
+status: stable
+template: grid_topics
+library: basekit/grid_topics
+props:
+  type: object
+  properties:
+    view_mode: { type: string, default: 'default' }
+    has_label: { type: boolean, default: false }
+    label: { type: string }
+    text: { type: string }
+    url: { type: string }
+    link_title: { type: string }
+    image: { type: string }
+    columns: { type: integer, default: 3 }
+    items_html: { type: string }

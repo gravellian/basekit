@@ -1,0 +1,14 @@
+{% if props.has_label and props.label %}<div class="title"><h3>{{ props.label }}</h3></div>{% endif %}
+<div class="content">
+  {% if props.text or (props.url and props.link_title) %}
+    <div class="text">
+      <p><span class="copy">{{ props.text|raw }}</span>{% if props.url and props.link_title %}<a class="button" href="{{ props.url }}">{{ props.link_title }}</a>{% endif %}</p>
+    </div>
+  {% endif %}
+
+  {% if props.items_html %}
+    <div class="grid-topics grid-cols-{{ props.columns|default(3) }}">
+      {{ props.items_html|raw }}
+    </div>
+  {% endif %}
+</div>

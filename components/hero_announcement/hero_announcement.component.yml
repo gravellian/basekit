@@ -1,0 +1,30 @@
+name: 'Hero Announcement'
+description: 'Reusable hero announcement component used by the hero_announcement custom block.'
+status: stable
+template: hero_announcement
+library: basekit/hero_announcement
+props:
+  type: object
+  properties:
+    view_mode:
+      type: string
+      default: 'default'
+      description: 'View mode key to control content template (default, variant_01, variant_02).'
+    has_label:
+      type: boolean
+      default: false
+    label:
+      type: string
+      description: 'Block title/label.'
+    text:
+      type: string
+      description: 'Rendered text/HTML for the announcement copy.'
+    url:
+      type: string
+      description: 'Link URL (optional).'
+    link_title:
+      type: string
+      description: 'Link title (optional).'
+    icon:
+      type: string
+      description: 'Rendered icon/media markup (optional).'

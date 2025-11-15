@@ -1,0 +1,94 @@
+@use 'base' as *;
+.form-textarea-wrapper {
+  // max-width: 894px;
+}
+
+.ck .ck.ck-editor__editable_inline {
+  padding: 1.5em 0 !important;
+
+  background-color: $page-bgcolor !important;
+  & > :first-child {
+    margin-top: 0;
+  }
+}
+
+.ck.ck-content {
+  /* removed debug border */
+  margin: 0;
+  & > h2:first-child {
+    /* when the first child of the ckeditor is an h2, remove top margin*/
+    // margin-top: 0 !important;
+  }
+
+  /* load all body-styles from include file */
+  @include bodyStyle;
+
+  .drupal-media-style-align-left, /* applies to media */
+  .image-style-align-left {
+    /* applies to to inline images */
+    margin: 0 2em 1em 0;
+    max-width: 65%;
+  }
+
+  .drupal-media-style-align-right, /* applies to media */
+  .image-style-align-right {
+    /* applies to to inline images */
+    margin: 0 0 1em 2em;
+    max-width: 65%;
+  }
+
+  .drupal-media-style-align-center, /* applies to media */
+  .image-style-align-center {
+    /* applies to to inline images */
+    text-align: center;
+    margin: 0 auto 1em auto;
+    max-width: 95%;
+  }
+
+  li img,
+  p img {
+    /* display inline images within text */
+    vertical-align: middle;
+    border: none;
+    margin: 0 0.5em;
+  }
+
+  .media[class^='display--main_66'],
+  figure[data-view-mode^='main_66'] {
+    width: 65%;
+    max-width: 65%;
+  }
+
+  .media[class^='display--main_50'],
+  figure[data-view-mode^='main_50'] {
+    width: 49%;
+    max-width: 49%;
+  }
+
+  .media[class^='display--main_33'],
+  figure[data-view-mode^='main_33'] {
+    max-width: 32%;
+  }
+
+  .media[class^='display--main_25'],
+  figure[data-view-mode^='main_25'] {
+    max-width: 24%;
+  }
+  /* /ck_content */
+}
+
+/* set background-color of editor in fullscreen */
+.ck-editor[data-fullscreen='fullscreeneditor'] {
+  background-color: gray !important;
+}
+
+/* set max width of editor in fullscreen */
+.ck.ck-editor[data-fullscreen='fullscreeneditor'] .ck-content {
+  // max-width: 894px; /* <p> in main content area is 868px -- adjust accordingly */
+  // margin: 1rem auto 0 auto;
+}
+
+/* styles for displaying the external-form media-type */
+// figure:has(.inline-external-form)  {
+//   display: inline-block;
+// }

@@ -1,0 +1,11 @@
+{#
+  Wrapperless region template.
+  This renders only the region content without any surrounding markup.
+  It is enabled for specific regions via theme suggestions in basekit.theme.
+  To use for another region, add its machine name to $bare_regions in
+  basekit_theme_suggestions_region_alter().
+#}
+{% if content %}
+  {{ content }}
+{% endif %}
+
