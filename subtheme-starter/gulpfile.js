@@ -15,7 +15,7 @@ const sassTask = () => {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(gulpSass({
-      includePaths: ['scss', '../basekit/scss', '../basekit/components'],
+      includePaths: ['scss', '../../contrib/basekit/scss', '../../contrib/basekit/components'],
       silenceDeprecations: ['legacy-js-api']
     }).on('error', gulpSass.logError))
     .pipe(postcss([autoprefixer(), cssnano()]))
@@ -29,7 +29,7 @@ const componentSassTask = () => {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(gulpSass({
-      includePaths: ['scss', '../basekit/scss', '../basekit/components'],
+      includePaths: ['scss', '../../contrib/basekit/scss', '../../contrib/basekit/components'],
       silenceDeprecations: ['legacy-js-api']
     }).on('error', gulpSass.logError))
     .pipe(postcss([autoprefixer(), cssnano()]))
@@ -46,4 +46,3 @@ const watchTask = () => {
 // Default build compiles both
 gulp.task('default', gulp.series(sassTask, componentSassTask));
 gulp.task('watch', watchTask);
-
