@@ -1,113 +1,66 @@
-@use '../../scss/_tokens';
-/* Restored default styles for hero_headline component. */
+@use 'base' as *;
+/* Hero Headline minimal styles (extend as needed) */
+.block-type--hero_headline {
+  .title h3 {
+    color: $color-1;
+    font-weight: 700;
+  }
+  .content .text {
+    font-size: $font-size-body * 0.9;
+  }
+}
 .block-type--hero_headline.block-view-mode--compact .content .text {
-  font-size: 1.445em;
+  font-size: $font-size-body * 0.85;
 }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap {
-  display: grid;
-  grid-template-areas: 'image' 'title' 'content' 'cta';
-  grid-template-columns: auto;
-  grid-template-rows: 12em 10em auto;
-  text-align: center;
-}
+.block-type--hero_headline.block-view-mode--default {
+  /* nested */
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .content {
-  align-items: top;
-  display: flex;
-  grid-area: content;
-  justify-content: center;
-}
+  .block-wrap {
+    /* block wrap sets the display type */
+  }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .content .text {
-  color: #cdc3b5;
-  font-family: Roboto, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  padding-bottom: 2em;
-  padding-top: 2em;
-}
+  h2 {
+    color: $color-2;
+  }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .content .text b,
-.block-type--hero_headline.block-view-mode--default .block-wrap .content .text strong {
-  font-weight: 500;
-}
+  .image svg path {
+    fill: rgba($color-text, 0.5);
+    opacity: 1;
+  }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .content .text .light {
-  font-weight: 100;
-}
+  .text * {
+    color: $color-text;
+  }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .content .text p {
-  margin-bottom: 0;
-}
+  .cta .field__items > .field__item a,
+  .cta .field__items > .field__item a:visited {
+    background-color: rgba($color-2, 1);
+    color: $white;
+  }
 
-.block-type--hero_headline.block-view-mode--default .block-wrap .image {
-  align-items: end;
-  display: flex;
-  grid-area: image;
-  justify-content: center;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .image .media {
-  width: 10em;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .image .media svg {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .image .media svg path {
-  fill: hsla(35, 19%, 76%, 0.5);
-  opacity: 1;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .title {
-  align-items: center;
-  border-bottom: 0.025em solid #d5b35b;
-  display: flex;
-  grid-area: title;
-  justify-content: center;
-  margin-left: 5em;
-  margin-right: 5em;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .title h2 {
-  color: #635d59;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .title h3 {
-  color: #d5b35b;
-  font-family: Archivo, sans-serif;
-  font-size: 3.06em;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 0;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .title h3 b,
-.block-type--hero_headline.block-view-mode--default .block-wrap .title h3 strong {
-  font-weight: 900;
-}
-
-.block-type--hero_headline.block-view-mode--default .block-wrap .cta .field__items > .field__item a,
-.block-type--hero_headline.block-view-mode--default .block-wrap .cta .field__items > .field__item a:visited {
-  background-color: #d5b35b;
-  color: #fff;
+  /* /nested */
 }
 
 .block-type--hero_headline.block-view-mode--default.reverse-1 {
-  background-color: #635d59;
-}
+  background-color: $color-1;
+  /* nested */
 
-.block-type--hero_headline.block-view-mode--default.reverse-1 .image svg path {
-  fill: #fff;
-  opacity: 1;
-}
+  .block-wrap {
+  }
 
-.block-type--hero_headline.block-view-mode--default.reverse-1 .text *,
-.block-type--hero_headline.block-view-mode--default.reverse-1 h2 {
-  color: #fff;
+  .image svg path {
+    fill: $white;
+    opacity: 1;
+  }
+
+  h2 {
+    color: $white;
+  }
+
+  .text * {
+    color: $white;
+  }
+
+  /* /reverse nested */
 }

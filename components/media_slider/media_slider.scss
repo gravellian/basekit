@@ -1,4 +1,13 @@
-@use '../../scss/_tokens';
-/* Restored default styles for media_slider component. */
-.media-slider { position: relative; }
-.media-slider .media-slider__inner { width: 100%; }
+@use 'base' as *;
+.media-slider {
+  position: relative;
+  .media-slider__inner {
+    width: 100%;
+  }
+}
+
+/* Variant hooks use view mode names */
+.media-slider--main-100-16x9 {
+}
+.media-slider--main-100-21x9 {
+}

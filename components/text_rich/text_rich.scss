@@ -1,4 +1,10 @@
-@use '../../scss/_tokens';
-/* Restored default styles for text_rich component. */
-.block-type--text_rich .title h3 { color: #635d59; font-weight: 700; }
-.block-type--text_rich .content .text { font-size: 1.615em; }
+@use 'base' as *;
+.block-type--text_rich {
+  .title h3 {
+    color: $color-1;
+    font-weight: 700;
+  }
+  .content .text {
+    font-size: $font-size-body * 0.95;
+  }
+}

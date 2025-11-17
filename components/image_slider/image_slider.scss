@@ -1,4 +1,12 @@
-@use '../../scss/_tokens';
-/* Restored default styles for image_slider component. */
-.image-slider { position: relative; }
-.image-slider .image-slider__inner { width: 100%; }
+@use 'base' as *;
+.image-slider {
+  position: relative;
+  .image-slider__inner {
+    width: 100%;
+  }
+}
+
+.image-slider--main-100-16x9 {
+}
+.image-slider--main-100-21x9 {
+}
