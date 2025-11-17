@@ -1,2 +1,4 @@
 @use '../../scss/_tokens';
-@use './_media_slider';
+/* Restored default styles for media_slider component. */
+.media-slider { position: relative; }
+.media-slider .media-slider__inner { width: 100%; }
