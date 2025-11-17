@@ -14,4 +14,5 @@
    );
    For now, load defaults without overrides.
 */
-@use '../basekit/scss/base/var/var_default';
+// Use BaseKit's own default tokens when compiling BaseKit's components.
+@use './base/var/var_default';
