@@ -162,3 +162,8 @@ image_slider:
   css:
     theme:
       components/image_slider/image_slider.css: {}
+
+article_index_item:
+  css:
+    theme:
+      components/article_index_item/article_index_item.css: {}

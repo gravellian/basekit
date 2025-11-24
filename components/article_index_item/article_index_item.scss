@@ -1,0 +1,22 @@
+@use 'base' as *;
+
+// Article index card styling.
+.article-index-item {
+  @include block-pop;
+  margin-bottom: $siteg * 2;
+  text-align: left;
+  border: 1px solid red;
+}
+
+.article-index-item__media {
+  margin-bottom: $siteg;
+}
+
+.article-index-item__title {
+  @include headingtext;
+  margin: 0 0 0.5em;
+}
+
+.article-index-item__summary {
+  @include bodytext;
+}

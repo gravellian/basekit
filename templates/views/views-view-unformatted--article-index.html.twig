@@ -1,0 +1,17 @@
+{#
+  Override for the article_index view.
+  Renders each row via the BaseKit Article Index Item SDC.
+#}
+{% for row in rows %}
+  {% set fields = row.content %}
+  {{ include('@basekit/components/article_index_item/article_index_item.html.twig', {
+    props: {
+      title: fields.title is defined ? (fields.title|render|striptags|trim) : '',
+      url:   fields.title is defined and fields.title[0]['#url'] is defined ? fields.title[0]['#url'] : null,
+      date:  fields.created is defined ? (fields.created|render|striptags|trim) : '',
+      summary: fields.body is defined ? fields.body|render : '',
+      image: fields.field_image is defined ? fields.field_image|render : ''
+    }
+  }) }}
+{% endfor %}
+

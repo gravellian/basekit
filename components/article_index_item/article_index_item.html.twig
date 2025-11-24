@@ -1,0 +1,34 @@
+{#
+  BaseKit Article Index Item component.
+  Intended for use by the article_index view at /articles.
+#}
+<article class="article-index-item">
+  {% if image %}
+    <div class="article-index-item__media">
+      {{ image }}
+    </div>
+  {% endif %}
+
+  <div class="article-index-item__body">
+    {% if date %}
+      <div class="article-index-item__meta">{{ date }}</div>
+    {% endif %}
+
+    {% if title %}
+      <h2 class="article-index-item__title">
+        {% if url %}
+          <a href="{{ url }}">{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
+      </h2>
+    {% endif %}
+
+    {% if summary %}
+      <div class="article-index-item__summary">
+        {{ summary }}
+      </div>
+    {% endif %}
+  </div>
+</article>
+
