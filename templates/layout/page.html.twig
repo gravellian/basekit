@@ -65,17 +65,20 @@
 </header>
 {{ page.show }}
 <div class="page-main pagep">
+    {% set has_manage = page.manage is not empty %}
+    {% set breadcrumb = page.breadcrumb %}
+    {% set has_breadcrumb = breadcrumb is not empty %}
     <div class="utility-belt">
-      <div class="mgr-links
-        {% if page.manage.basekit_manage %} manager{% endif %}
-        {% if page.manage.basekit_breadcrumbs %} crumbs{% endif %}
-        {% if page.manage.basekit_useraccountmenu %} account{% endif %}
-        clearfix">
-      {{ page.manage }}
-      {{ page.breadcrumbs }}
-      {# /mgr-links #}
-      </div>
-    {# /utility-belt #}
+      {% if has_manage %}
+        <div class="mgr-row top-row clearfix">
+          {{ page.manage }}
+        </div>
+      {% endif %}
+      {% if has_breadcrumb %}
+        <div class="mgr-row crumbs-row clearfix">
+          {{ breadcrumb }}
+        </div>
+      {% endif %}
     </div>
   <main class="main-wrapper" role="main">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}

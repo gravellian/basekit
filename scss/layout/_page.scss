@@ -200,6 +200,7 @@ body.menu-open .site-overlay {
 }
 
 .utility-belt {
+  border: 1px solid blue !important;
   padding-top: $siteg * 0.5;
   padding-bottom: $siteg * 0.25;
   margin-right: -$m-pagep;
@@ -212,6 +213,7 @@ body.menu-open .site-overlay {
 .mgr-links {
   display: flex;
   flex-direction: column;
+  border: 1px solid yellow;
 }
 
 .mgr-links {
