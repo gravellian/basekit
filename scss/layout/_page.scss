@@ -200,7 +200,7 @@ body.menu-open .site-overlay {
 }
 
 .utility-belt {
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   padding-top: $siteg * 0.5;
   padding-bottom: $siteg * 0.25;
   margin-right: -$m-pagep;
@@ -210,11 +210,46 @@ body.menu-open .site-overlay {
   display: none; /* hide on handheld */
 }
 
-.mgr-links {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid yellow;
+/* Debug borders for utility belt children to help with flex/layout tweaking. */
+.mgr-row {
+  // border: 1px solid red;
 }
+
+.mgr-row.top-row {
+  // border: 1px solid green !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $siteg * 0.5;
+}
+
+.utility-belt nav.menu--manage,
+.utility-belt .block.block-superfishmanage {
+  // border: 1px solid orange !important;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+.utility-belt .block.menu--account {
+  // border: 1px solid pink !important;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+}
+
+
+.mgr-row.crumbs-row {
+  // border: 1px solid green !important;
+}
+
+
+
+.utility-belt .block.block-system-breadcrumb-block {
+  // border: 1px solid purple !important;
+}
+
+
+
+
 
 .mgr-links {
   /* display: none;  hide this on mobile */
