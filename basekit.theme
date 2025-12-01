@@ -59,6 +59,19 @@ function _basekit_switch_menu_theme(&$element) {
 }
 
 /**
+ * Implements hook_theme_suggestions_block_alter().
+ *
+ * Adds a shared template suggestion for utility belt blocks so we can strip
+ * the default wrappers.
+ */
+function basekit_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $region = $variables['elements']['#region'] ?? '';
+  if (strpos($region, 'utility_') === 0) {
+    $suggestions[] = 'block__utility_belt';
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_paragraph_alter().
  *
  * Add a minimal "bare" paragraph template when a paragraph is rendered

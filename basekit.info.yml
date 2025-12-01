@@ -5,8 +5,9 @@ version: 1.0.0
 regions:
   header: Header
   show: Slideshow
-  manage: Manage
-  breadcrumb: Breadcrumb
+  utility_manage: Manage
+  utility_breadcrumb: Breadcrumb
+  utility_account: Account
   highlighted: Highlighted
   help: Help
   title: Title

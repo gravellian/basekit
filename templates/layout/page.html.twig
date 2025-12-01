@@ -65,19 +65,28 @@
 </header>
 {{ page.show }}
 <div class="page-main pagep">
-    {% set has_manage = page.manage is not empty %}
-    {% set breadcrumb = page.breadcrumb %}
-    {% set has_breadcrumb = breadcrumb is not empty %}
-    <div class="utility-belt">
+    {% set has_manage = page.utility_manage is not empty %}
+    {% set has_breadcrumb = page.utility_breadcrumb is not empty %}
+    {% set has_account = page.utility_account is not empty %}
+    {% set utility_classes = ['utility-belt'] %}
+    {% if has_manage %}
+      {% set utility_classes = utility_classes|merge(['utility-belt--has-manage']) %}
+    {% endif %}
+    {% if has_breadcrumb %}
+      {% set utility_classes = utility_classes|merge(['utility-belt--has-breadcrumb']) %}
+    {% endif %}
+    {% if has_account %}
+      {% set utility_classes = utility_classes|merge(['utility-belt--has-account']) %}
+    {% endif %}
+    <div class="{{ utility_classes|join(' ') }}">
       {% if has_manage %}
-        <div class="mgr-row top-row clearfix">
-          {{ page.manage }}
-        </div>
+        {{ page.utility_manage }}
+      {% endif %}
+      {% if has_account %}
+        {{ page.utility_account }}
       {% endif %}
       {% if has_breadcrumb %}
-        <div class="mgr-row crumbs-row clearfix">
-          {{ breadcrumb }}
-        </div>
+        {{ page.utility_breadcrumb }}
       {% endif %}
     </div>
   <main class="main-wrapper" role="main">
