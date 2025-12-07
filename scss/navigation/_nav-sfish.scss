@@ -42,15 +42,24 @@ ul.sf-menu.sf-style-dg * {
   list-style: none;
 }
 
+.superfish-processed ul.sf-menu.sf-style-dg,
 ul.sf-menu.sf-style-dg {
   display: flex;
   flex-wrap: wrap;
   gap: $sf-gap;
 }
 
+.sf-menu.sf-style-dg li {
+  float: none !important;
+}
+
 ul.sf-menu.sf-style-dg > li {
   position: relative;
   margin: 0 0.5em;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 ul.sf-menu.sf-style-dg.sf-navbar {

@@ -94,19 +94,6 @@ div.geshifilter {
   background-color: rgba($site-bgcolor, 0.85);
 }
 
-/* style preformatted code blocks with geshi */
-div.geshifilter pre {
-  overflow: hidden;
-}
-
-/* unset table styles within geshifilter */
-.geshifilter table th,
-.geshifilter table td {
-  border: unset;
-  padding: unset;
-  font-size: unset;
-}
-
 #container {
   /* this is the page container */
   box-shadow: 0 0 0.75em rgba($black, 0.25);

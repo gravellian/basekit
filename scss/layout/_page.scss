@@ -150,38 +150,43 @@ body * {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+  @include desktop-small {
+    height: $d-page-header;
+    position: relative;
+    display: flex; /* on desktop flex-items are in columns */
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 
-/* Overlay visibility while open */
-body.menu-open .site-overlay {
-  display: block;
-  opacity: 1;
-}
+  .page-header button.menu-btn {
+    appearance: none;
+    border-radius: 0;
+    color: $white;
+    border: 0px solid #ccc;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 2em;
+    padding: 0;
+    z-index: 2;
+    &:hover {
+      background-color: rgba($color-1, 0.75);
+    }
 
-.page-header button.menu-btn {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0;
-  color: $white;
-  border: 0px solid #ccc;
-  width: 2.5em;
-  height: 2.5em;
-  font-size: 2em;
-  padding: 0;
-  z-index: 2;
-}
+    &:active {
+      background-color: rgba($color-1, 1);
+    }
+    @include desktop-small {
+      display: none;
+    }
+  }
 
-.page-header button.menu-btn:hover {
-  background-color: rgba($color-1, 0.75);
-}
-
-.page-header button.menu-btn:active {
-  background-color: rgba($color-1, 1);
-}
-
-.page-header .block.menu--main {
-  display: none;
+  .page-header .block.menu--main {
+    display: none;
+    justify-content: center;
+    @include desktop-small {
+      display: flex;
+    }
+  }
 }
 
 .page-content {
@@ -207,37 +212,48 @@ body.menu-open .site-overlay {
   margin-left: -$m-pagep;
   padding-right: $m-pagep;
   padding-left: $m-pagep;
+  flex-wrap: wrap;
   display: none; /* hide on handheld */
-}
-
-/* Debug borders for utility belt children to help with flex/layout tweaking. */
-.mgr-row {
-  // border: 1px solid red;
-}
-
-.mgr-row.top-row {
-  // border: 1px solid green !important;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $siteg * 0.5;
-}
-
-.region-utility-manage {
-  border: 1px solid white !important;
+  @include desktop-small {
+    margin-right: -$d-pagep;
+    margin-left: -$d-pagep;
+    padding-right: $d-pagep;
+    padding-left: $d-pagep;
+    display: flex;
+  }
 }
 
 .utility-belt nav.menu--manage,
 .utility-belt .block.block-superfishmanage {
-  border: 1px solid orange !important;
-  flex: 1 1 auto;
+  // border: 1px solid orange !important;
+  flex: 0 0 70%;
   justify-content: flex-start;
+  // background-color: rgba(white, 0.2);
 }
 
 .utility-belt .block.menu--account {
   // border: 1px solid pink !important;
-  flex: 0 0 auto;
+  flex: 0 0 30%;
   justify-content: flex-end;
+  // background-color: rgba(green, 0.2);
+  ul.menu {
+    justify-content: flex-end;
+  }
+}
+
+.utility-belt .block-system-breadcrumb-block {
+  flex: 0 0 100%;
+  font-size: $font-size-body * 0.65;
+  height: 2em;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  .breadcrumb {
+    padding: 0;
+    ol {
+    }
+  }
 }
 
 .mgr-row.crumbs-row {
@@ -334,38 +350,9 @@ a.anchor {
 @media all and (min-width: 768px) {
   /* page layout for desktop screens */
 
-  .page-header {
-    height: $d-page-header;
-    position: relative;
-    display: flex; /* on desktop flex-items are in columns */
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-
-  .page-header button.menu-btn {
-    display: none;
-  }
-
-  .page-header .block.menu--main {
-    display: flex;
-    justify-content: center;
-  }
-
   .page-footer .block.menu--footer {
     display: flex;
     justify-content: center;
-  }
-
-  .page-header ul {
-    margin: 0 auto;
-  }
-
-  .utility-belt {
-    margin-right: -$d-pagep;
-    margin-left: -$d-pagep;
-    padding-right: $d-pagep;
-    padding-left: $d-pagep;
-    display: block; /* show on desktop */
   }
 
   .mgr-links {

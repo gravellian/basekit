@@ -47,6 +47,11 @@ base:
       # removed old mobile-menu.css include; handled via component styles
       css/styles.css:
         weight: -10
+  js:
+    js/sticky-header.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
 dialog:
   version: VERSION
   css:
