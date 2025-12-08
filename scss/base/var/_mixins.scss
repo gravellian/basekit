@@ -142,7 +142,6 @@
 }
 
 @mixin nav-horz {
-  display: block;
   @include desktop-small {
     display: inline-block;
   }
