@@ -8,10 +8,11 @@
   {% set _image = content.field_block_image is defined ? content.field_block_image|render : null %}
   {% set _text = content.field_block_text is defined ? content.field_block_text|render : '' %}
   {% set _vm = block_view_mode|default('default') %}
+  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
   {{ include('@basekit/components/text_rich/text_rich.html.twig', {
     props: {
-      has_label: label ? true : false,
-      label: label,
+      has_label: _title ? true : false,
+      label: _title,
       text: _text,
       url: _link_url,
       link_title: _link_title,

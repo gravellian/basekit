@@ -205,69 +205,6 @@ body * {
 .page-content .page-title {
 }
 
-.utility-belt {
-  // border: 1px solid blue !important;
-  padding-top: $siteg * 0.5;
-  padding-bottom: $siteg * 0.25;
-  margin-right: -$m-pagep;
-  margin-left: -$m-pagep;
-  padding-right: $m-pagep;
-  padding-left: $m-pagep;
-  flex-wrap: wrap;
-  display: none; /* hide on handheld */
-  @include desktop-small {
-    margin-right: -$d-pagep;
-    margin-left: -$d-pagep;
-    padding-right: $d-pagep;
-    padding-left: $d-pagep;
-    display: flex;
-  }
-}
-
-.utility-belt nav.menu--manage,
-.utility-belt .block.block-superfishmanage {
-  // border: 1px solid orange !important;
-  flex: 0 0 70%;
-  justify-content: flex-start;
-  // background-color: rgba(white, 0.2);
-}
-
-.utility-belt .block.menu--account {
-  // border: 1px solid pink !important;
-  flex: 0 0 30%;
-  justify-content: flex-end;
-  // background-color: rgba(green, 0.2);
-  ul.menu {
-    justify-content: flex-end;
-  }
-}
-
-.utility-belt .block-system-breadcrumb-block {
-  flex: 0 0 100%;
-  font-size: $font-size-body * 0.65;
-  height: 2em;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: center;
-  display: flex;
-  .breadcrumb {
-    padding: 0;
-    ol {
-    }
-  }
-}
-
-.mgr-row.crumbs-row {
-  // border: 1px solid green !important;
-}
-
-.utility-belt .block.block-system-breadcrumb-block {
-  // border: 1px solid purple !important;
-}
-
-.mgr-links {
-  /* display: none;  hide this on mobile */
-}
 
 .region.region-actions {
   padding-top: $siteg * 0.25;

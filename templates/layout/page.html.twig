@@ -65,9 +65,9 @@
 </header>
 {{ page.show }}
 <div class="page-main pagep">
-    {% set has_manage = page.utility_manage is not empty %}
-    {% set has_breadcrumb = page.utility_breadcrumb is not empty %}
-    {% set has_account = page.utility_account is not empty %}
+    {% set has_manage = utility_manage_has_content ?? false %}
+    {% set has_breadcrumb = utility_breadcrumb_has_content ?? false %}
+    {% set has_account = utility_account_has_content ?? false %}
     {% set utility_classes = ['utility-belt'] %}
     {% if has_manage %}
       {% set utility_classes = utility_classes|merge(['utility-belt--has-manage']) %}
@@ -80,13 +80,13 @@
     {% endif %}
     <div class="{{ utility_classes|join(' ') }}">
       {% if has_manage %}
-        {{ page.utility_manage }}
+        {{ utility_manage_markup }}
       {% endif %}
       {% if has_account %}
-        {{ page.utility_account }}
+        {{ utility_account_markup }}
       {% endif %}
       {% if has_breadcrumb %}
-        {{ page.utility_breadcrumb }}
+        {{ utility_breadcrumb_markup }}
       {% endif %}
     </div>
   <main class="main-wrapper" role="main">

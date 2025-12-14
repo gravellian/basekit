@@ -6,11 +6,12 @@
 {% block content %}
   {% set _media = content.field_block_media is defined ? content.field_block_media|render : '' %}
   {% set _vm = block_view_mode|default('default') %}
+  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
 
   {{ include('@basekit/components/media_slider/media_slider.html.twig', {
     props: {
-      has_label: label ? true : false,
-      label: label,
+      has_label: _title ? true : false,
+      label: _title,
       media: _media,
       view_mode: _vm,
     }

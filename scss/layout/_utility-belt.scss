@@ -1,0 +1,98 @@
+@use '../base' as *;
+
+$utility-belt-height: 3em;
+
+.utility-belt {
+  padding-top: $siteg * 0.5;
+  padding-bottom: $siteg * 0.25;
+  margin-right: -$m-pagep;
+  margin-left: -$m-pagep;
+  padding-right: $m-pagep;
+  padding-left: $m-pagep;
+  flex-wrap: wrap;
+  display: none; /* hide on handheld */
+  @include desktop-small {
+    margin-right: -$d-pagep;
+    margin-left: -$d-pagep;
+    padding-right: $d-pagep;
+    padding-left: $d-pagep;
+    display: flex;
+  }
+
+  nav.menu--manage,
+  .block.block-superfishmanage {
+    flex: 1 0 70%;
+    justify-content: flex-start;
+  }
+
+  .block.menu--account {
+    flex: 0 0 30%;
+    justify-content: flex-end;
+    align-content: center;
+    ul.menu {
+      justify-content: flex-end;
+    }
+  }
+
+  .block-system-breadcrumb-block {
+    flex: 0 0 100%;
+    font-size: $font-size-body * 0.65;
+    height: $utility-belt-height;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    gap: 10px;
+    .breadcrumb {
+      padding: 0;
+      ol {
+      }
+    }
+  }
+
+  /* no manage menu */
+  &.utility-belt.utility-belt--has-account.utility-belt--has-breadcrumb {
+    // & > * {
+    //   background-color: rgba(purple, 0.25);
+    // }
+    .block.menu--account {
+      order: 2;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 25%;
+    }
+    .block-system-breadcrumb-block {
+      // margin-top: -($utility-belt-height);
+      order: 1;
+      flex-basis: 70%;
+      flex-shrink: 1;
+      margin-top: 0.25em;
+    }
+  }
+
+  /* has all the blocks */
+  &.utility-belt.utility-belt--has-manage.utility-belt--has-account.utility-belt--has-breadcrumb {
+    // & > * {
+    //   background-color: rgba(yellow, 0.1);
+    // }
+    nav.menu--manage,
+    .block.block-superfishmanage {
+      order: 1;
+      flex-basis: 70%;
+      flex-grow: 0;
+    }
+
+    .block.menu--account {
+      order: 2;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 25%;
+    }
+
+    .block-system-breadcrumb-block {
+      flex-basis: 70%;
+      order: 3;
+      flex-grow: 1;
+    }
+  }
+}

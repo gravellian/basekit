@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Component\Render\MarkupInterface;
+
 /**
  * @file
  * Theme hooks and preprocess functions for BaseKit.
@@ -15,6 +17,7 @@
 function basekit_preprocess_block(array &$variables) {
   $region = $variables['region'] ?? ($variables['elements']['#region'] ?? NULL);
   $base_plugin_id = $variables['base_plugin_id'] ?? ($variables['elements']['#base_plugin_id'] ?? NULL);
+  $plugin_id = $variables['plugin_id'] ?? ($variables['elements']['#plugin_id'] ?? NULL);
 
   // Apply to ANY core menu block rendered in the sidebar_first region.
   if ($region === 'sidebar_first' && $base_plugin_id === 'system_menu_block') {
@@ -36,6 +39,35 @@ function basekit_preprocess_block(array &$variables) {
     if (is_object($block_content) && method_exists($block_content, 'bundle')) {
       $variables['block_bundle'] = $block_content->bundle();
     }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Pre-render utility belt regions so Twig can make layout decisions based on
+ * the final markup (after lazy builders run and placeholders are replaced).
+ */
+function basekit_preprocess_page(array &$variables) {
+  $sections = [
+    'utility_manage',
+    'utility_breadcrumb',
+    'utility_account',
+  ];
+  $renderer = \Drupal::service('renderer');
+
+  foreach ($sections as $section) {
+    $render_array = $variables['page'][$section] ?? [];
+    if (empty($render_array)) {
+      $variables[$section . '_markup'] = '';
+      $variables[$section . '_has_content'] = FALSE;
+      continue;
+    }
+
+    $markup = $renderer->renderInIsolation($render_array);
+    $variables[$section . '_markup'] = $markup;
+    $variables[$section . '_has_content'] = basekit_markup_has_visible_content($markup);
   }
 }
 
@@ -120,4 +152,24 @@ function basekit_preprocess_views_view_unformatted(array &$variables) {
 
   // Add a targeted suggestion name to use a minimal wrapper template.
   $variables['theme_hook_suggestions'][] = 'views_view_unformatted__eva_block_items';
+}
+
+/**
+ * Determine if rendered markup has non-whitespace, non-comment content.
+ */
+function basekit_markup_has_visible_content($markup) {
+  if ($markup instanceof MarkupInterface) {
+    $markup = $markup->__toString();
+  }
+  else {
+    $markup = (string) $markup;
+  }
+  if ($markup === '') {
+    return FALSE;
+  }
+
+  // Strip Drupal debug comments and generic HTML comments.
+  $markup = preg_replace('/<!--(.|\s)*?-->/', '', $markup);
+  $markup = trim(strip_tags($markup, '<img><video>'));
+  return $markup !== '';
 }
