@@ -1,0 +1,87 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../base' as *;
+
+$_box-style-defaults: (
+  'box1': (
+    padding-mobile: 1.5em,
+    padding-desktop: 3em,
+    background: rgba($site-bgcolor, 0.75),
+    border-color: rgba($gray, 0.35),
+    stroke-color: rgba($color-1, 1),
+    heading-color: rgba($color-1, 1),
+    reverse-background: rgba($color-1, 0.9),
+    reverse-border-color: rgba($color-1, 1),
+    reverse-text-color: $white,
+    reverse-button-background: rgba($white, 1),
+    reverse-button-color: rgba($color-1, 1),
+    reverse-hover-border: rgba($color-2, 1),
+    reverse-active-border: rgba($color-3, 1),
+    reverse-active-background: rgba($color-1, 1),
+  ),
+  'box2': (
+    padding-mobile: 1.5em,
+    padding-desktop: 3em,
+    background: rgba($site-bgcolor, 0.5),
+    border-color: rgba($gray, 0.35),
+    stroke-color: rgba($color-1, 1),
+    heading-color: rgba($color-1, 1),
+    reverse-background: rgba($color-1, 0.9),
+    reverse-border-color: rgba($color-1, 1),
+    reverse-text-color: $white,
+    reverse-button-background: rgba($white, 1),
+    reverse-button-color: rgba($color-1, 1),
+    reverse-hover-border: rgba($color-2, 1),
+    reverse-active-border: rgba($color-3, 1),
+    reverse-active-background: rgba($color-1, 1),
+  ),
+);
+
+$box-style-map: map.merge(
+  $_box-style-defaults,
+  (
+    'box-1': map.get($_box-style-defaults, 'box1'),
+    'box-2': map.get($_box-style-defaults, 'box2'),
+  )
+) !default;
+
+$box-style-overrides: () !default;
+
+@function _replace-char($value, $target, $replacement) {
+  $result: '';
+  @for $i from 1 through string.length($value) {
+    $char: string.slice($value, $i, $i);
+    $result: $result + if($char == $target, $replacement, $char);
+  }
+  @return $result;
+}
+
+@function _normalize-box-name($name) {
+  @if meta.type-of($name) != 'string' {
+    @return $name;
+  }
+
+  $normalized: string.to-lower-case($name);
+  $normalized: _replace-char($normalized, '_', '-');
+
+  @if string.length($normalized) >= 4 and string.slice($normalized, 1, 4) == 'box-' {
+    $suffix: string.slice($normalized, 5);
+    @return 'box' + $suffix;
+  }
+
+  @return $normalized;
+}
+
+@function box-config($name) {
+  $key: _normalize-box-name($name);
+  $defaults: map.get($box-style-map, $key);
+  $overrides: map.get($box-style-overrides, $key);
+  @if $defaults == null {
+    @return null;
+  }
+  @if $overrides == null {
+    @return $defaults;
+  }
+  @return map.deep-merge($defaults, $overrides);
+}

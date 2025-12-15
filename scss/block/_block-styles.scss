@@ -1,4 +1,98 @@
+@use 'sass:map';
 @use '../base' as *;
+@use './box-config' as box-config;
+
+@mixin block-style-reset() {
+  background-color: unset;
+  padding: 0 !important;
+  box-shadow: unset;
+  border-radius: unset;
+  border: 0 none;
+}
+
+@function box-style($name) {
+  $config: box-config.box-config($name);
+  @if $config == null {
+    @error 'Unknown box style `#{$name}`.';
+  }
+  @return $config;
+}
+
+@mixin box-element($config) {
+  @include block-pop;
+  padding: map.get($config, padding-mobile);
+  border-radius: 0;
+  border: $stroke-1 solid map.get($config, border-color);
+  background-color: map.get($config, background);
+  @include desktop-small {
+    padding: map.get($config, padding-desktop);
+  }
+
+  h3,
+  h3 a:link,
+  h3 a:visited {
+    color: map.get($config, heading-color);
+  }
+}
+
+@mixin box-paragraph($config) {
+  background-color: map.get($config, background);
+  border: $stroke-1 solid map.get($config, border-color);
+}
+
+@mixin box-modifiers($config, $target: null) {
+  $target-selector: if($target == null, '&', $target);
+  $stroke-color: map.get($config, stroke-color);
+  $reverse-border: map.get($config, reverse-border-color);
+  $reverse-bg: map.get($config, reverse-background);
+  $reverse-text: map.get($config, reverse-text-color);
+  $reverse-button-bg: map.get($config, reverse-button-background);
+  $reverse-button-color: map.get($config, reverse-button-color);
+  $reverse-hover-border: map.get($config, reverse-hover-border);
+  $reverse-active-border: map.get($config, reverse-active-border);
+  $reverse-active-bg: map.get($config, reverse-active-background);
+
+  &.stroke-1,
+  &.stroke-2,
+  &.stroke-3 {
+    #{$target-selector} {
+      border-color: $stroke-color;
+    }
+  }
+
+  &.reverse-1 {
+    #{$target-selector} {
+      border-color: $reverse-border !important;
+      background-color: $reverse-bg;
+      color: $reverse-text;
+
+      h3,
+      h3 a:link,
+      h3 a:visited {
+        color: $reverse-text;
+      }
+
+      button,
+      .button {
+        background-color: $reverse-button-bg;
+        color: $reverse-button-color;
+      }
+    }
+
+    &.linked {
+      #{$target-selector} {
+        &:hover {
+          border-color: $reverse-hover-border;
+        }
+
+        &:active {
+          border-color: $reverse-active-border;
+          background-color: $reverse-active-bg;
+        }
+      }
+    }
+  }
+}
 
 /* style blocks inside the content region */
 .layout__region--content .block,
@@ -11,158 +105,66 @@
   /* /nested */
 }
 
-/* block box-1 */
+/* block box1 */
 /* box styles include border background and padding */
-.box-1 {
-  @include block-pop;
-  padding: 1.5em;
-  border-radius: 0;
-  border: $stroke-1 solid rgba($gray, 0.35);
-  background-color: rgba($site-bgcolor, 0.75);
-  @include desktop-small {
-    padding: 3em;
-  }
-  /* nested box-1 styles */
+$box-1-config: box-style('box1');
 
-  h3,
-  h3 a:link,
-  h3 a:visited {
-    color: rgba($color-1, 1);
-  }
-
-  &.stroke-1 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.stroke-2 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.stroke-3 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.reverse-1 {
-    border-color: rgba($color-1, 1) !important;
-    background-color: rgba($color-1, 0.9);
-    color: $white;
-    &.linked {
-      &:hover {
-        /* style for linked blocks */
-        border-color: rgba($color-2, 1);
-      }
-      &:active {
-        border-color: rgba($color-3, 1);
-        background-color: rgba($color-1, 1);
-      }
-    }
-
-    h3,
-    h3 a:link,
-    h3 a:visited {
-      color: rgba($white, 1);
-    }
-
-    button,
-    .button {
-      background-color: rgba($white, 1);
-      color: rgba($color-1, 1);
-    }
-
-    /* /end box-1 reverse */
-  }
+.box-1,
+.box1 {
+  @include box-element($box-1-config);
+  @include box-modifiers($box-1-config);
 
   &.pars {
     /* a block with multiple paragraphs to take on the box-1 style */
-    background-color: unset;
-    padding: 0 !important;
-    box-shadow: unset;
-    border-radius: unset;
-    border: 0 none;
+    @include block-style-reset;
   }
 
   &.pars .paragraph {
-    background-color: rgba($site-bgcolor, 0.75);
-    border: $stroke-1 solid rgba($gray, 0.35);
+    @include box-paragraph($box-1-config);
   }
 
   /* /end box-1 */
 }
 
-/* block box-2 */
+/* block box-1 items variant */
+.block.box-1-items,
+.block.box1-items {
+  @include block-style-reset;
+  @include box-modifiers($box-1-config, '.block-items > *');
+
+  .block-items > * {
+    @include box-element($box-1-config);
+  }
+}
+
+/* block box2 */
 /* box styles include border background and padding */
-.box-2 {
-  @include block-pop;
-  padding: 1.5em;
-  border-radius: 0;
-  border: $stroke-1 solid rgba($gray, 0.35);
-  background-color: rgba($site-bgcolor, 0.5);
-  @include desktop-small {
-    padding: 3em;
-  }
-  /* nested box-1 styles */
+$box-2-config: box-style('box2');
 
-  h3,
-  h3 a:link,
-  h3 a:visited {
-    color: rgba($color-1, 1);
-  }
-
-  &.stroke-1 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.stroke-2 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.stroke-3 {
-    border-color: rgba($color-1, 1);
-  }
-
-  &.reverse-1 {
-    border-color: rgba($color-1, 1) !important;
-    background-color: rgba($color-1, 0.9);
-    color: $white;
-    &.linked {
-      &:hover {
-        /* style for linked blocks */
-        border-color: rgba($color-2, 1);
-      }
-      &:active {
-        border-color: rgba($color-3, 1);
-        background-color: rgba($color-1, 1);
-      }
-    }
-
-    h3,
-    h3 a:link,
-    h3 a:visited {
-      color: rgba($white, 1);
-    }
-
-    button,
-    .button {
-      background-color: rgba($white, 1);
-      color: rgba($color-1, 1);
-    }
-
-    /* /end box-2 reverse */
-  }
+.box-2,
+.box2 {
+  @include box-element($box-2-config);
+  @include box-modifiers($box-2-config);
 
   &.pars {
     /* a block with multiple paragraphs to take on the box-1 style */
-    background-color: unset;
-    padding: 0 !important;
-    box-shadow: unset;
-    border-radius: unset;
-    border: 0 none;
+    @include block-style-reset;
   }
 
   &.pars .paragraph {
-    background-color: rgba($site-bgcolor, 0.75);
-    border: $stroke-1 solid rgba($gray, 0.35);
+    @include box-paragraph($box-2-config);
   }
 
   /* /end box-2 */
+}
+
+/* block box-2 items variant */
+.block.box-2-items,
+.block.box2-items {
+  @include block-style-reset;
+  @include box-modifiers($box-2-config, '.block-items > *');
+
+  .block-items > * {
+    @include box-element($box-2-config);
+  }
 }
