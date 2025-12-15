@@ -70,8 +70,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: 5em;
-      margin-right: 5em;
       border-bottom: $stroke-1 solid rgba($brand-primary, 1);
 
       h2 {
@@ -83,6 +81,7 @@
         font-size: $font-size-h3 * 1.5;
         letter-spacing: -0.03em;
         margin-bottom: 0;
+        padding-bottom: 0.25em;
       }
     }
 
