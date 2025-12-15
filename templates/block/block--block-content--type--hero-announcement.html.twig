@@ -10,7 +10,13 @@
   {% set _icon = content.field_block_icon is defined ? content.field_block_icon|render : null %}
   {% set _text = content.field_block_text is defined ? content.field_block_text|render : '' %}
   {% set _vm = block_view_mode|default('default') %}
-  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
+  {% set _title = null %}
+  {% if content.field_block_title is defined %}
+    {% set _title_markup = content.field_block_title|render %}
+    {% if _title_markup|striptags|trim %}
+      {% set _title = _title_markup %}
+    {% endif %}
+  {% endif %}
 
   {{ include('@basekit/components/hero_announcement/hero_announcement.html.twig', {
     props: {

@@ -7,7 +7,13 @@
   {% set _vm = block_view_mode|default('default') %}
   {# EVA attachment key from view config: block_images_entity_view_1 #}
   {% set _images = content.block_images_entity_view_1 is defined ? content.block_images_entity_view_1|render : '' %}
-  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
+  {% set _title = null %}
+  {% if content.field_block_title is defined %}
+    {% set _title_markup = content.field_block_title|render %}
+    {% if _title_markup|striptags|trim %}
+      {% set _title = _title_markup %}
+    {% endif %}
+  {% endif %}
 
   {{ include('@basekit/components/image_slider/image_slider.html.twig', {
     props: {

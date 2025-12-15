@@ -6,7 +6,13 @@
 {% block content %}
   {% set _media = content.field_block_media is defined ? content.field_block_media|render : '' %}
   {% set _vm = block_view_mode|default('default') %}
-  {% set _title = content.field_block_title is defined and content.field_block_title|render|striptags|trim ? content.field_block_title|render : null %}
+  {% set _title = null %}
+  {% if content.field_block_title is defined %}
+    {% set _title_markup = content.field_block_title|render %}
+    {% if _title_markup|striptags|trim %}
+      {% set _title = _title_markup %}
+    {% endif %}
+  {% endif %}
 
   {{ include('@basekit/components/media_slider/media_slider.html.twig', {
     props: {
