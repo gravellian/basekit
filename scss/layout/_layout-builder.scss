@@ -1,0 +1,8 @@
+@use '../base' as *;
+
+.layout__region--content {
+  & > .block {
+    // control blocks inside the layout region
+    margin-bottom: $siteg * 2;
+  }
+}

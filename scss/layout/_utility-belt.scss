@@ -23,6 +23,10 @@ $utility-belt-height: 3em;
   .block.block-superfishmanage {
     flex: 1 0 70%;
     justify-content: flex-start;
+    .sf-menu {
+      position: relative;
+      z-index: 1;
+    }
   }
 
   .block.menu--account {

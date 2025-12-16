@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../base' as *;
 
 /********************/
@@ -139,7 +140,8 @@ div.geshifilter {
   margin-bottom: 1em;
 }
 
-h1 {
+h1,
+h1.page-title {
   /* font */
   font-family: $font-heading;
   margin-top: 0;
@@ -150,8 +152,8 @@ h1 {
   text-align: left;
   letter-spacing: -0.025em;
   word-break: break-word;
-  padding: 0.5em 0 0.25em 0;
-  margin-bottom: 0;
+  padding: 0.5em 0 0 0;
+  margin-bottom: math.div($siteg, 2);
 
   @include desktop-small {
     font-size: $font-size-h1;
@@ -176,20 +178,6 @@ h1 .highlight {
 h1 .name {
   color: $color-2;
   display: block;
-}
-
-.block.page-title.wsubtext h1 {
-}
-
-.block.page-title.wsubtext p {
-  text-align: center;
-  font-style: italic;
-  font-size: $font-size-body;
-  color: rgba($gray, 1);
-  line-height: 1em;
-  padding-bottom: 1em;
-  margin-top: -1em;
-  margin-bottom: 0.25em;
 }
 
 h2.pane-title {

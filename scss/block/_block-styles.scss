@@ -94,17 +94,6 @@
   }
 }
 
-/* style blocks inside the content region */
-.layout__region--content .block,
-.region--content .block {
-  margin-bottom: $siteg * 4;
-  /* nested */
-  > *:last-child {
-    margin-bottom: 0 !important;
-  }
-  /* /nested */
-}
-
 /* block box1 */
 /* box styles include border background and padding */
 $box-1-config: box-style('box1');

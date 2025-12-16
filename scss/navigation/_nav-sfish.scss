@@ -30,7 +30,7 @@ $sf-pad-right: $link-pad-right !default;
 $sf-caret-pad: 0.75em !default;
 $sf-link-height: $link-height !default;
 $sf-submenu-min-width: 16em !default;
-$sf-submenu-offset-y: 0.35em !default;
+$sf-submenu-offset-y: 0 !default;
 $sf-flyout-offset-y: 0.15em !default;
 $sf-submenu-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.25) !default;
 
@@ -47,6 +47,8 @@ ul.sf-menu.sf-style-dg {
   display: flex;
   flex-wrap: wrap;
   gap: $sf-gap;
+  position: relative;
+  z-index: 2;
 }
 
 .sf-menu.sf-style-dg li {
