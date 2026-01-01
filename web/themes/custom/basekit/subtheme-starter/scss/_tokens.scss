@@ -3,7 +3,12 @@
 // @use '../basekit/scss/base/var/var_default' with (
 //   $brand-primary: #4b7bec,
 //   $brand-accent: #ff3366,
-//   $font-body: 'Inter', system-ui,
 //   $siteg: 1.25em
 // );
 
+// Font families are CSS variables. Define them in your subtheme layout, e.g.:
+// :root {
+//   --font-body: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+//   --font-heading: 'Bungee', 'Arial Black', sans-serif;
+//   --font-heading-narrow: 'Bungee Outline', 'Arial Black', sans-serif;
+// }

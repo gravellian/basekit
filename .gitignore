@@ -2,3 +2,4 @@ node_modules/
 .DS_Store
 components/**/*.map
 css/**/*.map
+*.code-workspace

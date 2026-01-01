@@ -15,3 +15,7 @@ props:
     image: { type: string }
     columns: { type: integer, default: 3 }
     items_html: { type: string }
+    items:
+      type: array
+      items:
+        type: object

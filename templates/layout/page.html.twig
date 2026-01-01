@@ -92,12 +92,12 @@
   <main class="main-wrapper" role="main">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       <div class="page-content clearfix">
-        {{ page.actions }}
         {% if page.highlighted|render|striptags('<img><video><drupal-render-placeholder>')|trim is not empty %}
         {{ page.highlighted }}
         {% endif %}
         {{ page.help }}
         {{ page.title }}
+        {{ page.actions }}
         {{ page.secondary_menu }}
         {{ page.content }}
       {# /page-content #}

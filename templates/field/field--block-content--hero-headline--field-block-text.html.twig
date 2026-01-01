@@ -1,0 +1,11 @@
+{% extends "field.html.twig" %}
+{#
+/**
+ * @file
+ * Text field for hero headline blocks without prose styles.
+ *
+ * Keeps text-formatted/clearfix for layout, but omits body-style so long-form
+ * typography rules do not apply.
+ */
+#}
+{% set attributes = attributes.addClass('clearfix', 'text-formatted') %}

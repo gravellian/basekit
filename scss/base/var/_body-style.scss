@@ -28,22 +28,32 @@
   /* difinitions are found in globals/_mixins partial      */
   h2 {
     @include body-h2;
+    font-size: var(--body-style-h2-size, #{vars.$font-size-h2});
+    line-height: var(--body-style-h2-line-height, #{vars.$line-height-h2});
   }
 
   h3 {
     @include body-h3;
+    font-size: var(--body-style-h3-size, #{vars.$font-size-h3});
+    line-height: var(--body-style-h3-line-height, #{vars.$line-height-h3});
   }
 
   h4 {
     @include body-h4;
+    font-size: var(--body-style-h4-size, #{vars.$font-size-h4});
+    line-height: var(--body-style-h4-line-height, #{vars.$line-height-h4});
   }
 
   h5 {
     @include body-h5;
+    font-size: var(--body-style-h5-size, #{vars.$font-size-h5});
+    line-height: var(--body-style-h5-line-height, #{vars.$line-height-h5});
   }
 
   h6 {
     @include body-h6;
+    font-size: var(--body-style-h6-size, #{vars.$font-size-h6});
+    line-height: var(--body-style-h6-line-height, #{vars.$line-height-h6});
   }
 
   /* block-level elements */
@@ -53,9 +63,10 @@
   ul,
   ol {
     margin-bottom: 2em;
-    font-family: vars.$font-body;
-    line-height: vars.$line-height-body;
-    font-size: vars.$font-size-body;
+    font-family: var(--font-body);
+    font-weight: var(--body-style-font-weight, #{vars.$font-weight-body});
+    line-height: var(--body-style-line-height, #{vars.$line-height-body});
+    font-size: var(--body-style-font-size, #{vars.$font-size-body});
     /* max-width: 40rem; use max-width to improve line-length/readability sitewide */
   }
 

@@ -6,7 +6,41 @@
     </div>
   {% endif %}
 
-  {% if props.items_html %}
+  {% if props.items %}
+    <div class="block-items">
+      {% for item in props.items %}
+        {% set topic = item.entity|default(null) %}
+        {% set topic_title = topic ? topic.field_topic_title.value|default('') : '' %}
+        {% set topic_text = topic ? topic.field_topic_text.processed|default(topic.field_topic_text.value|default('')) : '' %}
+        {% set topic_link = topic ? topic.field_topic_link.0|default(null) : null %}
+        {% set topic_icon_media = topic ? topic.field_topic_icon.entity|default(null) : null %}
+
+        <div class="paragraph">
+          {% if topic_icon_media %}
+            <div class="topic-icon">
+              {{ drupal_entity('media', topic_icon_media.id, 'default') }}
+            </div>
+          {% endif %}
+
+          {% if topic_title %}
+            <div class="topic-title">
+            <h3>{{ topic_title }}</h3>
+            </div>
+          {% endif %}
+
+          {% if topic_text %}
+            <div class="topic-text">{{ topic_text|raw }}</div>
+          {% endif %}
+
+          {% if topic_link and topic_link.url and topic_link.title %}
+            <div class="topic-link">
+              <a class="button" href="{{ topic_link.url }}">{{ topic_link.title }}</a>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% elseif props.items_html %}
     <div class="grid-topics grid-cols-{{ props.columns|default(3) }}">
       {{ props.items_html|raw }}
     </div>

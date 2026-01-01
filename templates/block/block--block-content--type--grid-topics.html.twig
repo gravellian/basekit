@@ -2,9 +2,25 @@
 {# Simplified template for grid_topics; render unified .block-items directly #}
 
 {% block content %}
-  {{ attach_library('basekit/grid_topics') }}
-  {# Output only the items field; field template provides .block-items wrapper #}
-  {% if content.field_block_items is defined %}
-    {{ content.field_block_items|render }}
+  {% set block = elements.content['#block_content'] ?? elements['#block_content'] ?? null %}
+  {% set items = block and block.field_block_items is not empty ? block.field_block_items : [] %}
+  {% set label = block and block.field_block_title.value ? block.field_block_title.value : '' %}
+  {% set text = '' %}
+  {% if block and block.field_block_text is not empty %}
+    {% set text = block.field_block_text.processed|default(block.field_block_text.value|default('')) %}
   {% endif %}
+  {% set link_item = block and block.field_block_link.0 ? block.field_block_link.0 : null %}
+  {% set link_url = link_item and link_item.url ? link_item.url : '' %}
+  {% set link_title = link_item and link_item.title ? link_item.title : '' %}
+
+  {{ include('@basekit/components/grid_topics/grid_topics.html.twig', {
+    props: {
+      has_label: label ? true : false,
+      label: label,
+      text: text,
+      url: link_url,
+      link_title: link_title,
+      items: items
+    }
+  }) }}
 {% endblock %}

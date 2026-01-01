@@ -37,7 +37,7 @@
   margin-bottom: 0;
   padding-bottom: 0.25em;
   letter-spacing: -0.02em;
-  font-family: vars.$font-heading;
+  font-family: var(--font-heading);
   color: vars.$color-h2;
   font-weight: vars.$font-weight-h2;
   &:after {
@@ -51,7 +51,7 @@
 @mixin body-h3 {
   font-size: vars.$font-size-h3;
   letter-spacing: 0.03em;
-  font-family: vars.$font-heading-narrow;
+  font-family: var(--font-heading-narrow);
   margin-top: 0;
   margin-bottom: 2em;
   color: vars.$color-h3;
@@ -96,7 +96,7 @@
 @mixin headingtext {
   font-style: normal;
   font-weight: 700;
-  font-family: vars.$font-heading;
+  font-family: var(--font-heading);
 
   strong,
   b {
@@ -107,7 +107,7 @@
 @mixin bodytext {
   font-style: normal;
   font-weight: 300;
-  font-family: vars.$font-body;
+  font-family: var(--font-body);
 
   strong,
   b {

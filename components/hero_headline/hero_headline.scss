@@ -77,11 +77,18 @@
       }
       h3 {
         color: $brand-primary;
-        @include headingtext;
+        font-style: normal;
+        font-weight: 700;
+        font-family: var(--font-heading-narrow);
         font-size: $font-size-h3 * 1.5;
         letter-spacing: -0.03em;
         margin-bottom: 0;
         padding-bottom: 0.25em;
+
+        strong,
+        b {
+          font-weight: 900;
+        }
       }
     }
 

@@ -13,29 +13,33 @@
     .paragraph {
       display: grid;
       gap: $siteg;
-      grid-template-columns: auto;
+      grid-template-columns: 5em auto;
       grid-template-rows: auto;
       grid-template-areas:
-        'icon'
-        'title'
-        'text';
+        'icon title'
+        'text text';
       margin-bottom: 2em;
       @include desktop-small {
-        grid-template-columns: 6em auto;
+        grid-template-columns: 5em auto;
         grid-template-rows: 6em auto;
         grid-template-areas:
           'icon title'
           'text text';
       }
-      .field--name-field-topic-icon {
+      .topic-icon {
         grid-area: icon;
         display: flex;
+        justify-content: center;
         @include desktop-small {
           justify-content: center;
           align-items: center;
         }
         .media {
-          width: 40%;
+          max-height: 100%;
+          .field__item {
+            margin: 5px;
+            // border: 1px solid red;
+          }
           @include desktop-small {
             width: 80%;
           }
@@ -47,21 +51,25 @@
           object-fit: cover;
         }
       }
-      .field--name-field-topic-icon svg,
-      .field--name-field-topic-icon svg * {
-        fill: currentColor !important;
-        stroke: currentColor !important;
+      .topic-icon svg,
+      .topic-icon svg * {
+        fill: $brand-primary;
+        stroke: $brand-primary;
       }
-      .field.field--name-field-topic-title {
+      .topic-title {
         grid-area: title;
-        @include headingtext;
-        font-size: $font-size-h3;
         display: flex;
+        align-items: center;
+        h3 {
+          @include headingtext;
+          font-size: $font-size-h3;
+          margin: 0;
+        }
         @include desktop-small {
           align-items: center;
         }
       }
-      .field--name-field-topic-text {
+      .topic-text {
         grid-area: text;
         @include bodytext;
         font-size: $font-size-body;

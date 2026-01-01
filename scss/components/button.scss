@@ -12,31 +12,40 @@ a.button,
 html input[type='button'],
 input[type='reset'],
 input[type='submit'] {
-  padding: $link-pad;
-  color: $white;
-  background: rgba($color-2, 0.8);
-  border: $border-dark;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $button-pad;
+  min-height: $button-height;
+  font-size: $button-size;
+  line-height: 1;
+  white-space: nowrap;
+  color: $button-color;
+  background: $button-bgcolor;
+  border: $button-border;
 
   &:link,
   &:visited {
     text-decoration: none;
-    color: $white;
-    background: rgba($color-2, 0.8);
-    border: $border-dark;
+    color: $button-color;
+    background: $button-bgcolor;
+    border: $button-border;
   }
 
   &:hover,
   &:focus {
-    color: $white;
-    background-color: rgba($color-3, 1);
-    border: $border-dark;
+    color: $button-hover-color;
+    background-color: $button-hover-bgcolor;
+    border: $button-hover-border;
     outline: $stroke-1 solid rgba($white, 0.8);
     outline-offset: 0.01em;
   }
 
   &:active {
     transform: scale(0.97);
-    background-color: rgba($color-2, 1);
+    color: $button-click-color;
+    background-color: $button-click-bgcolor;
+    border: $button-click-border;
   }
 
   &:last-child { margin-right: 0; }

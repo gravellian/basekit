@@ -10,9 +10,28 @@
 html {
 }
 
+:root {
+  --font-body: 'Roboto', sans-serif;
+  --font-heading: 'Archivo', sans-serif;
+  --font-heading-narrow: 'Archivo Narrow', sans-serif;
+  --body-style-font-size: #{$font-size-body};
+  --body-style-line-height: #{$line-height-body};
+  --body-style-font-weight: #{$font-weight-body};
+  --body-style-h2-size: #{$font-size-h2};
+  --body-style-h2-line-height: #{$line-height-h2};
+  --body-style-h3-size: #{$font-size-h3};
+  --body-style-h3-line-height: #{$line-height-h3};
+  --body-style-h4-size: #{$font-size-h4};
+  --body-style-h4-line-height: #{$line-height-h4};
+  --body-style-h5-size: #{$font-size-h5};
+  --body-style-h5-line-height: #{$line-height-h5};
+  --body-style-h6-size: #{$font-size-h6};
+  --body-style-h6-line-height: #{$line-height-h6};
+}
+
 body {
   font-weight: $font-weight-body;
-  font-family: $font-body;
+  font-family: var(--font-body);
   background-color: rgba($site-bgcolor, 1);
   color: $color-text;
 }
@@ -140,10 +159,9 @@ div.geshifilter {
   margin-bottom: 1em;
 }
 
-h1,
-h1.page-title {
+h1 {
   /* font */
-  font-family: $font-heading;
+  font-family: var(--font-heading);
   margin-top: 0;
   font-weight: $font-weight-h1;
   font-size: $font-size-h1;
@@ -220,4 +238,24 @@ h5 {
 
 h6 {
   @include body-h6;
+}
+
+.navigation.menu--manage {
+  border: 2px solid red;
+  ul.menu {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    li {
+      margin-right: 0.5em;
+      list-style: none;
+      a:link,
+      a:visited {
+        border: 1px solid blue;
+        background-color: $white;
+        padding: 0.5rem;
+        color: $black;
+      }
+    }
+  }
 }
