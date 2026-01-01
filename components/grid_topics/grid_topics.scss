@@ -13,7 +13,7 @@
     .paragraph {
       display: grid;
       gap: $siteg;
-      grid-template-columns: 5em auto;
+      grid-template-columns: 3.5em auto;
       grid-template-rows: auto;
       grid-template-areas:
         'icon title'
