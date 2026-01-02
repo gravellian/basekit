@@ -1,6 +1,7 @@
-{% if props.icon %}
+{% if props.icon_media %}
   <div class="image">
-    {% if props.url %}<a href="{{ props.url }}">{{ props.icon|raw }}</a>{% else %}{{ props.icon|raw }}{% endif %}
+    {% set icon_markup = drupal_entity('media', props.icon_media.id, 'default') %}
+    {% if props.url %}<a href="{{ props.url }}">{{ icon_markup }}</a>{% else %}{{ icon_markup }}{% endif %}
   </div>
 {% endif %}
 {% if props.has_label and props.label %}
@@ -8,5 +9,5 @@
 {% endif %}
 <div class="content"><div class="text">
   {{ props.text|raw }}
-  {% if props.url and props.link_title.0 %}<a class="button" href="{{ props.url }}">{{ props.link_title }}</a>{% endif %}</p>
+  {% if props.url and props.link_title %}<a class="button" href="{{ props.url }}">{{ props.link_title }}</a>{% endif %}</p>
 </div></div>
