@@ -20,7 +20,7 @@
         'text text';
       margin-bottom: 2em;
       @include desktop-small {
-        grid-template-columns: 5em auto;
+        grid-template-columns: 3.5em auto;
         grid-template-rows: 6em auto;
         grid-template-areas:
           'icon title'
@@ -30,25 +30,21 @@
         grid-area: icon;
         display: flex;
         justify-content: center;
+        //background-color: rgba($color: #FFF, $alpha: .25);
         @include desktop-small {
           justify-content: center;
           align-items: center;
         }
         .media {
           max-height: 100%;
-          .field__item {
-            margin: 5px;
-            // border: 1px solid red;
-          }
           @include desktop-small {
             width: 80%;
           }
-        }
-        & img,
-        & svg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          & img,
+          & svg {
+            width: 120%;
+            height: 120%;
+          }
         }
       }
       .topic-icon svg,

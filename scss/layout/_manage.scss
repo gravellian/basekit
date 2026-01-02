@@ -1,0 +1,29 @@
+@use '../base' as *;
+
+.view.manage {
+  background-color: rgba($color-1, 0.05);
+  border: $stroke-1 solid rgba($color-1, 0.4);
+  border-radius: 0.5em;
+  padding: 1.5em;
+}
+
+.view.manage .view-header,
+.view.manage .view-filters,
+.view.manage .view-content,
+.view.manage .view-empty,
+.view.manage .view-footer {
+  margin-bottom: 1em;
+}
+
+.view.manage .view-header {
+  font-size: $font-size-h4;
+  color: $color-h2;
+}
+
+.view.manage table.views-table {
+  border: $stroke-1 solid rgba($color-1, 0.3);
+}
+
+.view.manage table.views-table th {
+  background-color: rgba($color-2, 0.2);
+}
