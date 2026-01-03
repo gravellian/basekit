@@ -7,7 +7,7 @@
 {% if props.has_label and props.label %}
   <div class="title"><h3>{{ props.label }}</h3></div>
 {% endif %}
-<div class="content"><div class="text">
-  {{ props.text|raw }}
+<div class="content"><div class="text body-style">
+  <p>{{ props.text|raw }}</p>
   {% if props.url and props.link_title %}<a class="button" href="{{ props.url }}">{{ props.link_title }}</a>{% endif %}</p>
 </div></div>
