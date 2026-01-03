@@ -21,12 +21,6 @@ $brand-primary: #d5b35b !default; /* gold - primary brand */
 $brand-accent: #3ea0d8 !default; /* blue - accent */
 $brand-neutral: #a28d7a !default; /* taupe - neutral */
 
-/* Back-compat aliases for existing code paths */
-$color-1: $brand-bg !default; /* background */
-$color-2: $brand-primary !default; /* primary */
-$color-3: $brand-accent !default; /* secondary */
-$color-4: $brand-neutral !default; /* alternative */
-
 /* text */
 /* Establish a base text color, then derive a small ramp from it. */
 $text-base: #f0e5d4 !default; /* brighter base for text */
@@ -123,7 +117,7 @@ $font-size-small: $font-size-body * 0.9 !default;
 $font-weight-h1: 800 !default; /* Poppins bold for headings */
 $font-size-h1: $font-size-body * 2.25 !default;
 $line-height-h1: 1.1em !default;
-$color-h1: $color-2 !default;
+$color-h1: $brand-accent !default;
 /* h2 */
 $font-weight-h2: 500 !default; /* lighter than regular for better balance */
 $font-size-h2: $font-size-body * 1.9 !default;
@@ -138,17 +132,17 @@ $color-h3: $brand-neutral !default;
 $font-weight-h4: 500 !default;
 $font-size-h4: $font-size-body * 1.1 !default;
 $line-height-h4: 1.15em !default;
-$color-h4: $color-1;
+$color-h4: $brand-primary;
 /* h5 */
 $font-weight-h5: 100 !default;
 $font-size-h5: $font-size-body * 1.05 !default;
 $line-height-h5: 1.15em !default;
-$color-h5: $color-1;
+$color-h5: $brand-primary;
 /* h6 */
 $font-weight-h6: 100 !default;
 $font-size-h6: $font-size-body * 0.95 !default;
 $line-height-h6: 1.15em !default;
-$color-h6: $color-1;
+$color-h6: $brand-primary;
 
 /* stroke */
 $stroke-1: 0.025em !default;
@@ -166,7 +160,7 @@ $body-align: center !default; /* align all content in the site body */
 $page-align: left !default; /* align the page content */
 
 /* sections */
-$section-bgcolor: $color-2 !default;
+$section-bgcolor: $brand-accent !default;
 
 /* blocks */
 $block-bgcolor: transparent !default;
@@ -194,32 +188,32 @@ $link-radius: 0.25em !default;
 /* default menu links */
 
 /* menu links - link color */
-$link-color: $color-2 !default;
+$link-color: $brand-accent !default;
 $link-hover-color: $white !default;
-$link-click-color: $color-1 !default;
-$link-border: $stroke-1 solid rgba($color-1, 0.3) !default;
+$link-click-color: $brand-primary !default;
+$link-border: $stroke-1 solid rgba($brand-primary, 0.3) !default;
 
 /* menu links - background color */
 $link-bgcolor: rgba(transparent, 0) !default;
 $link-hover-bgcolor: rgba($site-bgcolor, 0.5) !default;
-$link-click-bgcolor: rgba($color-1, 0.3) !default;
+$link-click-bgcolor: rgba($brand-primary, 0.3) !default;
 
 /* menu links - border weight, stroke and color */
-$link-border: $stroke-1 solid rgba($color-3, 0.5) !default;
-$link-hover-border: $stroke-1 solid rgba($color-1, 0.75) !default;
-$link-click-border: $stroke-1 solid rgba($color-1, 1) !default;
+$link-border: $stroke-1 solid rgba($brand-neutral, 0.5) !default;
+$link-hover-border: $stroke-1 solid rgba($brand-primary, 0.75) !default;
+$link-click-border: $stroke-1 solid rgba($brand-primary, 1) !default;
 
 /* active menu links */
 
 /* active menu links - active item link color */
 $link-isactive-color: $white !default;
 $link-isactive-hover-color: $white !default;
-$link-isactive-click-color: $color-1 !default;
+$link-isactive-click-color: $brand-primary !default;
 
 /* active menu links - active item background color */
-$link-isactive-bgcolor: $color-2 !default;
-$link-isactive-hover-bgcolor: $color-2 !default;
-$link-isactive-click-bgcolor: rgba($color-1, 0.2) !default;
+$link-isactive-bgcolor: $brand-accent !default;
+$link-isactive-hover-bgcolor: $brand-accent !default;
+$link-isactive-click-bgcolor: rgba($brand-primary, 0.2) !default;
 
 /* active menu links - active item border color */
 $link-isactive-border: $stroke-1 solid rgba(transparent, 0) !default;
@@ -233,23 +227,23 @@ $td-bg: green;
 /* form variables */
 /******************/
 $form-pad: 1em !default;
-$form-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$form-border: $stroke-1 solid rgba($brand-primary, 0.5) !default;
 
 /* admin table variables */
 $form-td-pad: 1em !default;
-$form-td-border: $stroke-2 solid rgba($color-1, 0.5) !default;
+$form-td-border: $stroke-2 solid rgba($brand-primary, 0.5) !default;
 $form-td-bg: rgba(transparent, 0) !default;
-$form-td-bg2: rgba($color-1, 0.05) !default;
+$form-td-bg2: rgba($brand-primary, 0.05) !default;
 
 /* wraps around form items */
-$form-wrap-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$form-wrap-border: $stroke-1 solid rgba($brand-primary, 0.5) !default;
 $form-wrap-pad: $siteg * 0.25 !default;
-$form-wrap-bgcolor: rgba($color-1, 0.05) !default;
+$form-wrap-bgcolor: rgba($brand-primary, 0.05) !default;
 $form-summary-size: 1.1em !default;
 
 /* form-items */
 $form-item-pad: 1.25em !default;
-$form-item-border: $stroke-1 solid rgba($color-1, 0.5) !default;
+$form-item-border: $stroke-1 solid rgba($brand-primary, 0.5) !default;
 $form-item-after: 3em !default;
 /* form item labels */
 $form-label-size: 1.1em !default;
@@ -257,7 +251,7 @@ $form-label-size: 1.1em !default;
 /* form text inputs */
 $form-input-border: 1px solid rgba($site-bgcolor, 0.5) !default;
 $form-input-pad: 0.75em 0.5em !default;
-$form-input-color: $color-1;
+$form-input-color: $brand-primary;
 $form-input-size: $font-size-body !default;
 $form-input-bgcolor: $site-bgcolor !default;
 
@@ -279,20 +273,20 @@ $button-pad: $button-pad-top $button-pad-right $button-pad-bottom
 $button-radius: 0.25em !default;
 /* button colors */
 $button-color: $white !default;
-$button-bgcolor: $color-2 !default;
+$button-bgcolor: $brand-accent !default;
 $button-border: $stroke-1 solid rgba(transparent, 0) !default;
 /* button - hover */
 $button-hover-color: $white !default;
-$button-hover-bgcolor: rgba($color-1, 0.5) !default;
+$button-hover-bgcolor: rgba($brand-primary, 0.5) !default;
 $button-hover-border: $button-border !default;
 /* button - click */
 $button-click-color: $site-bgcolor !default;
-$button-click-bgcolor: $color-1 !default;
-$button-click-border: $stroke-1 solid rgba($color-2, 1) !default;
+$button-click-bgcolor: $brand-primary !default;
+$button-click-border: $stroke-1 solid rgba($brand-accent, 1) !default;
 /* button - active */
-$button-active-color: $color-2;
-$button-active-bgcolor: $color-2 !default;
-$button-active-border: $stroke-1 solid $color-2 !default;
+$button-active-color: $brand-accent;
+$button-active-bgcolor: $brand-accent !default;
+$button-active-border: $stroke-1 solid $brand-accent !default;
 
 /* https://base64.guru/converter/encode/image/svg */
 

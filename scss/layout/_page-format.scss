@@ -81,13 +81,13 @@ table.views-table {
 
   th,
   td {
-    border: $stroke-1 solid $color-1;
+    border: $stroke-1 solid $brand-primary;
     padding: 0.5em;
     font-size: $font-size-body * 0.8;
   }
 
   th {
-    background-color: rgba($color-1, 0.15);
+    background-color: rgba($brand-primary, 0.15);
     text-align: left;
     font-weight: normal;
   }
@@ -121,7 +121,7 @@ div.geshifilter {
 }
 
 .page-header {
-  border-bottom: $stroke-2 solid rgba($color-2, 1);
+  border-bottom: $stroke-2 solid rgba($brand-accent, 1);
   background-color: $page-bgcolor;
 }
 
@@ -135,15 +135,15 @@ div.geshifilter {
 }
 
 .utility-belt {
-  background-color: rgba($color-1, 0.05);
-  border-bottom: $stroke-1 solid rgba($color-1, 0.8);
+  background-color: rgba($brand-primary, 0.05);
+  border-bottom: $stroke-1 solid rgba($brand-primary, 0.8);
 }
 
 .mgr-links {
 }
 
 .page-footer {
-  border-top: $stroke-2 solid rgba($color-2, 1);
+  border-top: $stroke-2 solid rgba($brand-accent, 1);
   padding-top: 4em;
   padding-bottom: 4em;
   text-align: center;
@@ -181,7 +181,7 @@ h1 {
 
 h1 a:link,
 h1 a:visited {
-  color: $color-1;
+  color: $brand-primary;
   text-decoration: none;
 }
 
@@ -190,11 +190,11 @@ h1 a:hover {
 }
 
 h1 .highlight {
-  color: $color-2;
+  color: $brand-accent;
 }
 
 h1 .name {
-  color: $color-2;
+  color: $brand-accent;
   display: block;
 }
 

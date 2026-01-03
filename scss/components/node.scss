@@ -4,5 +4,8 @@
  */
 
 .node--unpublished {
-  background-color: #fff4f4;
+  //background-color: #fff4f4;
+  border: 1px solid rgba(255,255,255, .125);
+  padding: .5em;
+  margin: -.5em;
 }

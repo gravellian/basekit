@@ -1,8 +1,8 @@
 @use '../base' as *;
 
 .view.manage {
-  background-color: rgba($color-1, 0.05);
-  border: $stroke-1 solid rgba($color-1, 0.4);
+  background-color: rgba($brand-primary, 0.05);
+  border: $stroke-1 solid rgba($brand-primary, 0.4);
   border-radius: 0.5em;
   padding: 1.5em;
 }
@@ -21,9 +21,11 @@
 }
 
 .view.manage table.views-table {
-  border: $stroke-1 solid rgba($color-1, 0.3);
+  border: $stroke-1 solid rgba($brand-primary, 0.3);
 }
 
 .view.manage table.views-table th {
-  background-color: rgba($color-2, 0.2);
+  background-color: rgba($brand-accent, 0.2);
 }
+
+

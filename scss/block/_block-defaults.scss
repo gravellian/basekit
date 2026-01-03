@@ -16,10 +16,10 @@
     border: $stroke-1 solid rgba($gray, 1);
     &:hover {
       /* style for linked blocks */
-      border-color: rgba($color-2, 1);
+      border-color: rgba($brand-accent, 1);
     }
     &:active {
-      border-color: rgba($color-3, 1);
+      border-color: rgba($brand-neutral, 1);
     }
     /* linked styles */
   }
@@ -27,7 +27,7 @@
 }
 
 .block.layout-builder-block {
-  border: $stroke-1 solid rgba($color-1, 1);
+  border: $stroke-1 solid rgba($brand-primary, 1);
   margin-bottom: 1em !important;
   /* add a border by default for the layout builder */
 }
@@ -113,5 +113,5 @@ a.block-edit {
 a.block-edit:hover {
   opacity: 2;
   text-decoration: underline;
-  color: $color-1;
+  color: $brand-primary;
 }
