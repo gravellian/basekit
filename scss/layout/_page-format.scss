@@ -36,11 +36,6 @@ body {
   color: $color-text;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 blockquote,
 figure,
@@ -158,44 +153,44 @@ div.geshifilter {
   border-bottom: $stroke-2 solid $rule;
   margin-bottom: 1em;
 }
-
-h1 {
-  /* font */
-  font-family: var(--font-heading);
-  margin-top: 0;
-  font-weight: $font-weight-h1;
-  font-size: $font-size-h1;
-  color: $color-h1;
-  line-height: $line-height-h1;
-  text-align: left;
-  letter-spacing: -0.025em;
-  word-break: break-word;
-  padding: 0.5em 0 0 0;
-  margin-bottom: math.div($siteg, 2);
-
-  @include desktop-small {
+.block-page-title-block {
+  h1.page-title {
+    /* font */
+    font-family: var(--font-heading);
+    margin-top: 0;
+    font-weight: $font-weight-h1;
     font-size: $font-size-h1;
-    padding: 0.5em 2.4em 0.25em 0;
+    color: $brand-accent;
+    line-height: $line-height-h1;
+    text-align: left;
+    letter-spacing: -0.025em;
+    word-break: break-word;
+    padding: 0.5em 0 0 0;
+    margin-bottom: math.div($siteg, 2);
+
+    @include desktop-small {
+      padding: 0.5em 2.4em 0.25em 0;
+    }
+
+    a:link,
+    a:visited {
+      color: $brand-primary;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight {
+      color: $brand-accent;
+    }
+
+    .name {
+      color: $brand-accent;
+      display: block;
+    }
   }
-}
-
-h1 a:link,
-h1 a:visited {
-  color: $brand-primary;
-  text-decoration: none;
-}
-
-h1 a:hover {
-  text-decoration: underline;
-}
-
-h1 .highlight {
-  color: $brand-accent;
-}
-
-h1 .name {
-  color: $brand-accent;
-  display: block;
 }
 
 h2.pane-title {
@@ -218,26 +213,6 @@ h2.pane-title {
 
 .block.section-header h2 a:hover,
 .section-header h2 a:hover {
-}
-
-h2 {
-  @include body-h2;
-}
-
-h3 {
-  @include body-h3;
-}
-
-h4 {
-  @include body-h4;
-}
-
-h5 {
-  @include body-h5;
-}
-
-h6 {
-  @include body-h6;
 }
 
 .navigation.menu--manage {
