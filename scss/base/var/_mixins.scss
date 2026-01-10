@@ -40,12 +40,6 @@
   font-family: var(--font-heading);
   color: vars.$color-h2;
   font-weight: vars.$font-weight-h2;
-  &:after {
-    margin-top: 0.2em;
-    border-bottom: 2px solid rgba(vars.$color-h2, 0.85);
-    display: flex; /* prevent border-bottom from overlapping floats */
-    content: '';
-  }
 }
 
 @mixin body-h3 {

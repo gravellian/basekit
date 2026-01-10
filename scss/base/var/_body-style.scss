@@ -30,6 +30,12 @@
     @include body-h2;
     font-size: var(--body-style-h2-size, #{vars.$font-size-h2});
     line-height: var(--body-style-h2-line-height, #{vars.$line-height-h2});
+    &:after {
+      margin-top: 0.2em;
+      border-bottom: 2px solid rgba(vars.$color-h2, 0.85);
+      display: flex; /* prevent border-bottom from overlapping floats */
+      content: '';
+    }
   }
 
   h3 {

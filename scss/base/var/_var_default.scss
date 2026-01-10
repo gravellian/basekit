@@ -16,32 +16,34 @@ $d-section-h2-height: 2em !default;
 
 /* brand colors */
 /* Core brand tokens (raw palette) */
-$brand-bg: #635d59 !default; /* background */
+$brand-deep: #4f4a47 !default; /* deep background */
+$brand-surface: #635d59 !default; /* page surface */
 $brand-primary: #d5b35b !default; /* gold - primary brand */
 $brand-accent: #3ea0d8 !default; /* blue - accent */
 $brand-neutral: #a28d7a !default; /* taupe - neutral */
+$brand-light: #f0e5d4 !default; /* cream - light brand */
 
 /* text */
 /* Establish a base text color, then derive a small ramp from it. */
-$text-base: #f0e5d4 !default; /* brighter base for text */
+$text-base: $brand-light !default; /* brighter base for text */
 /* Tone-based text ramp (blend background INTO text; weight applies to first color) */
 $text-bright: color.mix(
-  $brand-bg,
+  $brand-surface,
   $text-base,
   0%
 ) !default; /* 0% bg, 100% text */
 $text-high: color.mix(
-  $brand-bg,
+  $brand-surface,
   $text-base,
   15%
 ) !default; /* 15% bg, 85% text */
 $text-muted: color.mix(
-  $brand-bg,
+  $brand-surface,
   $text-base,
   25%
 ) !default; /* 25% bg, 75% text */
 $text-subtle: color.mix(
-  $brand-bg,
+  $brand-surface,
   $text-base,
   35%
 ) !default; /* 35% bg, 65% text */
@@ -72,9 +74,9 @@ $neutral-light: tint($brand-neutral, 14%) !default;
 $neutral-dark: shade($brand-neutral, 14%) !default;
 
 /* Surfaces */
-$surface-0: $brand-bg !default; /* page bg */
-$surface-1: tint($brand-bg, 6%) !default; /* cards/blocks */
-$surface-2: tint($brand-bg, 10%) !default; /* elevated */
+$surface-0: $brand-surface !default; /* page bg */
+$surface-1: tint($brand-surface, 6%) !default; /* cards/blocks */
+$surface-2: tint($brand-surface, 10%) !default; /* elevated */
 
 /* Borders and rules */
 $rule: rgba($brand-neutral, 0.5) !default; /* hr/underlines */
@@ -154,8 +156,8 @@ $border-light: 0.05em solid #ccc !default;
 $border-dark: 0.1em solid #333 !default;
 
 /* body and page */
-$site-bgcolor: #4f4a47 !default; /* site body background color */
-$page-bgcolor: #635d59 !default; /* site page content background color */
+$site-bgcolor: $brand-deep !default; /* site body background color */
+$page-bgcolor: $brand-surface !default; /* site page content background color */
 $body-align: center !default; /* align all content in the site body */
 $page-align: left !default; /* align the page content */
 
