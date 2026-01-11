@@ -61,7 +61,10 @@
             fill: rgba($brand-primary, 1);
             opacity: 1;
           }
-          #icon-canvas { fill: none; stroke: 1px solid black; }
+          #icon-canvas {
+            fill: none;
+            stroke: 1px solid black;
+          }
         }
       }
     }
@@ -74,7 +77,7 @@
       border-bottom: $stroke-1 solid rgba($brand-primary, 1);
 
       h2 {
-        color: $color-1;
+        color: $brand-primary;
       }
       h3 {
         color: $brand-primary;
@@ -95,7 +98,7 @@
 
     .cta .field__items > .field__item a,
     .cta .field__items > .field__item a:visited {
-      background-color: rgba($color-2, 1);
+      background-color: rgba($brand-accent, 1);
       color: $white;
     }
 
@@ -103,7 +106,7 @@
   }
 }
 .block-type--hero_headline.block-view-mode--default.reverse-1 {
-  background-color: $color-1;
+  background-color: $brand-primary;
   /* nested */
 
   .block-wrap {

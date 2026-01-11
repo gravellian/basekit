@@ -1,7 +1,7 @@
 @use 'base' as *;
 .block-type--text_rich {
   .title h3 {
-    color: $color-1;
+    color: $brand-primary;
     font-weight: 700;
   }
   .content .text {
