@@ -2,7 +2,7 @@
   "name": "basekit",
   "version": "1.0.0",
   "scripts": {
-    "build": "gulp",
+    "build": "NODE_ENV=production gulp",
     "watch": "gulp watch"
   },
   "devDependencies": {
