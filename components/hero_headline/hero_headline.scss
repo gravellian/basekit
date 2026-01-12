@@ -5,6 +5,80 @@
   font-size: $font-size-body * 0.85;
 }
 
+.block-type--hero_headline.block-view-mode--variant_01 {
+  .block-wrap {
+    display: grid;
+    align-items: start;
+    gap: 0.75em;
+    text-align: left;
+  }
+
+  .layout {
+    display: grid;
+    align-items: start;
+    gap: 1em;
+  }
+
+  @include desktop-small {
+    .layout {
+      grid-template-columns: auto 1fr;
+      column-gap: 1.5em;
+    }
+  }
+
+  .media {
+    display: flex;
+    align-items: start;
+  }
+
+  .media .media {
+    width: 3.5em;
+  }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-body * 0.7;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $brand-primary;
+  }
+
+  .media svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    #icon-primary {
+      fill: rgba($brand-primary, 1);
+      opacity: 1;
+    }
+
+    #icon-canvas {
+      fill: none;
+      stroke: 1px solid black;
+    }
+  }
+
+  .content .text {
+    @include bodytext;
+    max-width: 40rem;
+
+    p {
+      font-family: var(--font-heading-narrow);
+      font-size: $font-size-h2;
+      line-height: 1.1;
+      margin: 0;
+    }
+  }
+
+  .cta .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+}
+
 .block-type--hero_headline.block-view-mode--default {
   /* nested */
 

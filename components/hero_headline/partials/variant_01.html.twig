@@ -1,0 +1,23 @@
+<div class="layout">
+  {% if props.icon_media %}
+    <div class="media">
+      {% set icon_markup = drupal_entity('media', props.icon_media.id, 'default') %}
+      {% if props.url %}<a href="{{ props.url }}">{{ icon_markup }}</a>{% else %}{{ icon_markup }}{% endif %}
+    </div>
+  {% endif %}
+  <div class="main">
+    {% if props.has_label and props.label %}
+      <div class="kicker"><span class="eyebrow">{{ props.label }}</span></div>
+    {% endif %}
+    {% if props.text %}
+      <div class="content">
+        <div class="text body-style">
+          <p>{{ props.text|raw }}</p>
+        </div>
+      </div>
+    {% endif %}
+    {% if props.url and props.link_title %}
+      <div class="cta"><a class="button" href="{{ props.url }}">{{ props.link_title }}</a></div>
+    {% endif %}
+  </div>
+</div>
