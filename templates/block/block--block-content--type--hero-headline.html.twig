@@ -4,6 +4,7 @@
 {% block content %}
   {% set block = elements.content['#block_content'] ?? elements['#block_content'] ?? null %}
   {% set vm = block_view_mode|default('default') %}
+  {% set background = content.field_block_background is defined ? content.field_block_background|render : '' %}
   {% set label = block and block.field_block_title.value ? block.field_block_title.value : '' %}
   {% set text = '' %}
   {% if block and block.field_block_text is not empty %}
@@ -21,6 +22,7 @@
       url: link_url,
       link_title: link_title,
       icon_media: icon_media,
+      background: background,
       view_mode: vm,
     }
   }) }}

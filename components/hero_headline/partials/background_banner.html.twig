@@ -1,0 +1,18 @@
+{{ props.background }}
+<div class="background-banner__content">
+  {% if props.icon_media %}
+    <div class="image">
+      {% set icon_markup = drupal_entity('media', props.icon_media.id, 'default') %}
+      {% if props.url %}<a href="{{ props.url }}">{{ icon_markup }}</a>{% else %}{{ icon_markup }}{% endif %}
+    </div>
+  {% endif %}
+  {% if props.has_label and props.label %}
+    <div class="title"><h2>{{ props.label }}</h2></div>
+  {% endif %}
+  {% if props.text %}
+    <div class="content"><div class="text body-style">{{ props.text|raw }}</div></div>
+  {% endif %}
+  {% if props.url and props.link_title %}
+    <div class="cta"><a class="button" href="{{ props.url }}">{{ props.link_title }}</a></div>
+  {% endif %}
+</div>

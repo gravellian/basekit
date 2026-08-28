@@ -22,3 +22,6 @@ props:
       type: string
     icon:
       type: string
+    background:
+      type: string
+      description: 'Rendered background-image formatter output for background_banner.'

@@ -5,6 +5,53 @@
   font-size: $font-size-body * 0.85;
 }
 
+.block-type--hero_headline.block-view-mode--background_banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: '';
+    background: var(--hero-headline-banner-overlay, rgba($brand-deep, 0.58));
+  }
+
+  .block-wrap {
+    display: flex;
+    min-height: var(--hero-headline-banner-min-height, 18rem);
+    align-items: center;
+    justify-content: center;
+    padding: var(--hero-headline-banner-padding, 4em $siteg);
+  }
+
+  .background-banner__content {
+    display: grid;
+    width: min(100%, 70rem);
+    gap: 1.25em;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .image .media {
+    width: var(--hero-headline-banner-icon-size, 7em);
+  }
+
+  .title h2,
+  .text {
+    color: var(--hero-headline-banner-color, $white);
+  }
+
+  .title h2,
+  .text p {
+    margin: 0;
+  }
+}
+
 .block-type--hero_headline.block-view-mode--variant_01 {
   .block-wrap {
     display: grid;
