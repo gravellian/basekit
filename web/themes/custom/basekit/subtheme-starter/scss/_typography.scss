@@ -1,0 +1,9 @@
+@use 'tokens' as site;
+@use 'copy-scale';
+
+@include copy-scale.install(
+  $body-size: site.$body-size,
+  $small: site.$body-small-ratio,
+  $large: site.$body-large-ratio,
+  $ui: site.$body-ui-ratio
+);

@@ -1,5 +1,4 @@
 @use './_tokens';
-@use 'layout';
-@use 'navigation';
-@use 'block';
+@use 'typography';
 
+// Add site-owned layout, navigation and block skins as separate partials.

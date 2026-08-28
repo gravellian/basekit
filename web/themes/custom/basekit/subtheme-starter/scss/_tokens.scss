@@ -1,14 +1,11 @@
-@use '../basekit/scss/base/var/var_default';
-// To override BaseKit tokens, switch to:
-// @use '../basekit/scss/base/var/var_default' with (
-//   $brand-primary: #4b7bec,
-//   $brand-accent: #ff3366,
-//   $siteg: 1.25em
-// );
+@use 'base/var/var_default';
 
-// Font families are CSS variables. Define them in your subtheme layout, e.g.:
-// :root {
-//   --font-body: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
-//   --font-heading: 'Bungee', 'Arial Black', sans-serif;
-//   --font-heading-narrow: 'Bungee Outline', 'Arial Black', sans-serif;
-// }
+// Copy is independent of heading sizes. Set this site's reading standard here.
+$body-size: max(18px, 1.7rem);
+$body-small-ratio: 0.85;
+$body-large-ratio: 1.15;
+$body-ui-ratio: 0.65;
+
+// Brand overrides belong in the var_default configuration above, e.g.:
+// @use 'base/var/var_default' with ($brand-primary: #4b7bec);
+// Font families use --font-body, --font-heading and --font-heading-narrow.

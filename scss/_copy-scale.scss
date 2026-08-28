@@ -1,0 +1,43 @@
+// Opt-in runtime copy API. Heading sizes, colors and layout remain independent.
+// Subthemes include this once after loading their own tokens.
+@mixin install(
+  $body-size: max(18px, 1.7rem),
+  $small: 0.85,
+  $large: 1.15,
+  $ui: 0.65
+) {
+  :root {
+    --font-size-body: #{$body-size};
+    --font-size-body-small: calc(var(--font-size-body) * #{$small});
+    --font-size-body-large: calc(var(--font-size-body) * #{$large});
+    --font-size-body-ui: calc(var(--font-size-body) * #{$ui});
+  }
+
+  .body-style {
+    --body-style-font-size: var(--font-size-body);
+  }
+
+  // Apply variants to the wrapper, not individual paragraphs.
+  .body-style.copy-small {
+    --body-style-font-size: var(--font-size-body-small);
+  }
+
+  .body-style.copy-large {
+    --body-style-font-size: var(--font-size-body-large);
+  }
+
+  .body-style.copy-ui {
+    --body-style-font-size: var(--font-size-body-ui);
+  }
+
+  // Current SDC and legacy grid markup both participate in the copy scale.
+  .block-type--grid_topics.block-view-mode--full .block-items .paragraph .topic-text,
+  .block-type--grid_topics .text {
+    font-size: var(--font-size-body);
+    line-height: 1.35;
+  }
+
+  .utility-belt .block-system-breadcrumb-block {
+    font-size: var(--font-size-body-ui);
+  }
+}
