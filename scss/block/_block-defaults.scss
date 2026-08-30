@@ -80,6 +80,28 @@
   padding-left: 0;
 }
 
+/*
+ * Paint a block's background to the viewport edges without removing its
+ * content from BaseKit's stepped site-width layout. The block remains the
+ * positioning and sizing context; this decorative layer only extends the
+ * computed background (including an inline background image) to 100vw.
+ */
+.layout__region > .block.block-full-bleed {
+  isolation: isolate;
+}
+
+.layout__region > .block.block-full-bleed::before {
+  background: inherit;
+  content: '';
+  inset-block: 0;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: -1;
+}
+
 .block.start,
 .page-content .block.start {
   /* remove margin beneath stop items */

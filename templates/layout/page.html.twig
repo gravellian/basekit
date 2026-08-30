@@ -68,27 +68,29 @@
     {% set has_manage = utility_manage_has_content ?? false %}
     {% set has_breadcrumb = utility_breadcrumb_has_content ?? false %}
     {% set has_account = utility_account_has_content ?? false %}
-    {% set utility_classes = ['utility-belt'] %}
-    {% if has_manage %}
-      {% set utility_classes = utility_classes|merge(['utility-belt--has-manage']) %}
-    {% endif %}
-    {% if has_breadcrumb %}
-      {% set utility_classes = utility_classes|merge(['utility-belt--has-breadcrumb']) %}
-    {% endif %}
-    {% if has_account %}
-      {% set utility_classes = utility_classes|merge(['utility-belt--has-account']) %}
-    {% endif %}
-    <div class="{{ utility_classes|join(' ') }}">
+    {% if has_manage or has_breadcrumb or has_account %}
+      {% set utility_classes = ['utility-belt'] %}
       {% if has_manage %}
-        {{ utility_manage_markup }}
-      {% endif %}
-      {% if has_account %}
-        {{ utility_account_markup }}
+        {% set utility_classes = utility_classes|merge(['utility-belt--has-manage']) %}
       {% endif %}
       {% if has_breadcrumb %}
-        {{ utility_breadcrumb_markup }}
+        {% set utility_classes = utility_classes|merge(['utility-belt--has-breadcrumb']) %}
       {% endif %}
-    </div>
+      {% if has_account %}
+        {% set utility_classes = utility_classes|merge(['utility-belt--has-account']) %}
+      {% endif %}
+      <div class="{{ utility_classes|join(' ') }}">
+        {% if has_manage %}
+          {{ utility_manage_markup }}
+        {% endif %}
+        {% if has_account %}
+          {{ utility_account_markup }}
+        {% endif %}
+        {% if has_breadcrumb %}
+          {{ utility_breadcrumb_markup }}
+        {% endif %}
+      </div>
+    {% endif %}
   <main class="main-wrapper" role="main">
       <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       <div class="page-content clearfix">
@@ -97,7 +99,9 @@
         {% endif %}
         {{ page.help }}
         {{ page.title }}
-        {{ page.actions }}
+        {% if actions_has_content ?? false %}
+          {{ actions_markup }}
+        {% endif %}
         {{ page.secondary_menu }}
         {{ page.content }}
       {# /page-content #}

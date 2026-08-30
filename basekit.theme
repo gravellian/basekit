@@ -54,6 +54,7 @@ function basekit_preprocess_page(array &$variables) {
     'utility_manage',
     'utility_breadcrumb',
     'utility_account',
+    'actions',
   ];
   $renderer = \Drupal::service('renderer');
 
