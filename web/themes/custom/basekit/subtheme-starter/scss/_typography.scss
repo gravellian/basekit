@@ -5,5 +5,7 @@
   $body-size: site.$body-size,
   $small: site.$body-small-ratio,
   $large: site.$body-large-ratio,
-  $ui: site.$body-ui-ratio
+  $ui: site.$body-ui-ratio,
+  $smallest: site.$body-smallest-ratio,
+  $largest: site.$body-largest-ratio
 );

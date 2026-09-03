@@ -1,10 +1,9 @@
 @use 'base' as *;
-.form-textarea-wrapper {
-  // max-width: 894px;
-}
-
 .ck .ck.ck-editor__editable_inline {
-  padding: 1.5em 0 !important;
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: var(--wysiwyg-content-width, 60rem);
+  padding: 1.5em var(--wysiwyg-gutter, clamp(1rem, 3vw, 2rem)) !important;
 
   background-color: $page-bgcolor !important;
   & > :first-child {

@@ -7,10 +7,10 @@ const compile = (source) => sass.compileString(source, { loadPaths }).css;
 
 assert.equal(compile("@use 'copy-scale';"), '', 'API must remain opt-in');
 const css = compile("@use 'copy-scale'; @include copy-scale.install($body-size: max(18px, 1.85rem));");
-for (const token of ['body', 'body-small', 'body-large', 'body-ui']) {
+for (const token of ['body', 'body-smallest', 'body-small', 'body-large', 'body-largest', 'body-ui']) {
   assert.ok(css.includes(`--font-size-${token}:`), token);
 }
-for (const role of ['copy-small', 'copy-large', 'copy-ui', '.topic-text', '.text', '.block-system-breadcrumb-block']) {
+for (const role of ['copy-smallest', 'copy-small', 'copy-normal', 'copy-large', 'copy-largest', 'copy-ui', '.topic-text', '.text', '.block-system-breadcrumb-block']) {
   assert.ok(css.includes(role), role);
 }
 assert.ok(css.includes('max(18px, 1.85rem)'));

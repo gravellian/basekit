@@ -1,7 +1,9 @@
 @use 'var_default' as vars;
 @use 'mixins' as *;
+@use 'wysiwyg' as *;
 
 @mixin bodyStyle {
+  @include wysiwygSemanticStyles;
   /* these styles are imported into _body-style.scss and editor-styles.scss */
   /* include all styles that can apply to the editor body and the editor    */
   /* below, to style only the editor, use _editor-styles.scss after         */
@@ -159,6 +161,22 @@
       &.align-center img {
         margin: 0 auto; /* use margin to center img in figure tag */
       }
+    }
+  }
+
+  // CKEditor uses figure wrappers rather than the frontend .align-* classes.
+  // Keep this inside bodyStyle so subthemes including the mixin retain the
+  // media gutter even when their higher-specificity figure reset wins.
+  figure.drupal-media-style-align-right,
+  figure.drupal-media-style-align-left {
+    margin: 0 0 1em;
+  }
+  @include desktop-small {
+    figure.drupal-media-style-align-right {
+      margin-left: 2em;
+    }
+    figure.drupal-media-style-align-left {
+      margin-right: 2em;
     }
   }
 

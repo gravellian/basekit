@@ -1,0 +1,18 @@
+@use './_tokens';
+@use 'base' as *;
+@use 'copy-scale';
+
+:root {
+  @include copy-scale.tokens($body-size: tokens.$body-size, $small: tokens.$body-small-ratio, $large: tokens.$body-large-ratio, $ui: tokens.$body-ui-ratio, $smallest: tokens.$body-smallest-ratio, $largest: tokens.$body-largest-ratio);
+  --font-body: 'Roboto', sans-serif;
+  --font-heading: 'Archivo', sans-serif;
+  --font-heading-narrow: 'Archivo Narrow', sans-serif;
+  --wysiwyg-font-body: var(--font-body);
+  --wysiwyg-font-heading: var(--font-heading);
+  --wysiwyg-font-heading-narrow: var(--font-heading-narrow);
+}
+
+.ck-content,
+.cke_editable {
+  @include bodyStyle;
+}

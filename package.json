@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "NODE_ENV=production gulp",
+    "test": "node --test tests/*.test.cjs",
     "watch": "gulp watch"
   },
   "devDependencies": {

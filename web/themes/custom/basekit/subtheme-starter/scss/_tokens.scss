@@ -2,8 +2,10 @@
 
 // Copy is independent of heading sizes. Set this site's reading standard here.
 $body-size: max(18px, 1.7rem);
+$body-smallest-ratio: 0.75;
 $body-small-ratio: 0.85;
 $body-large-ratio: 1.15;
+$body-largest-ratio: 1.3;
 $body-ui-ratio: 0.65;
 
 // Brand overrides belong in the var_default configuration above, e.g.:

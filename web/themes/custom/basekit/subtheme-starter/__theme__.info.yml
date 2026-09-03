@@ -4,6 +4,8 @@ base theme: basekit
 core_version_requirement: ^11
 libraries:
   - __THEME_MACHINE__/base
+ckeditor5-stylesheets:
+  - css/editor-styles.css
 libraries-override:
   basekit/base: false
   basekit/messages: false
@@ -12,4 +14,3 @@ libraries-override:
   # Map BaseKit component libraries to sub‑theme outputs if you compile per‑component CSS
   # basekit/hero_headline: __THEME_MACHINE__/hero_headline
   # basekit/hero_announcement: __THEME_MACHINE__/hero_announcement
-
