@@ -195,6 +195,9 @@ body * {
 }
 
 .region.region-content {
+  /* Standard breathing room between page chrome/title and primary content. */
+  padding-top: $pagepad;
+  padding-bottom: $pagepad;
 }
 
 .block.block-system-main-block {
