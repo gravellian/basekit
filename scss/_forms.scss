@@ -1,0 +1,77 @@
+@use './base' as *;
+
+/*
+ * Public-form presentation only. Administrative forms render through Gin and
+ * do not load this theme. Keep selectors deliberately low-specificity so a
+ * BaseKit subtheme can replace individual decisions without undoing a skin.
+ */
+:root {
+  --basekit-form-control-color: #{$form-input-color};
+  --basekit-form-control-background: #{$form-input-bgcolor};
+  --basekit-form-control-border: #{$form-input-border};
+  --basekit-form-control-padding: #{$form-input-pad};
+  --basekit-form-control-font-size: #{$form-input-size};
+  --basekit-form-control-radius: #{$button-radius};
+  --basekit-form-label-font-size: #{$form-label-size};
+  --basekit-form-description-color: #{$text-subtle};
+  --basekit-form-focus-color: #{$focus-ring};
+  --basekit-login-form-width: 32rem;
+}
+
+:where(.form-item > label, .form-composite > legend) {
+  font-size: var(--basekit-form-label-font-size);
+}
+
+:where(
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='email'],
+  input[type='month'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
+  input[type='time'],
+  input[type='url'],
+  input[type='week'],
+  select,
+  textarea
+) {
+  max-width: 100%;
+  padding: var(--basekit-form-control-padding);
+  color: var(--basekit-form-control-color);
+  background: var(--basekit-form-control-background);
+  border: var(--basekit-form-control-border);
+  border-radius: var(--basekit-form-control-radius);
+  font: inherit;
+  font-size: var(--basekit-form-control-font-size);
+}
+
+:where(
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='email'],
+  input[type='month'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
+  input[type='time'],
+  input[type='url'],
+  input[type='week'],
+  select,
+  textarea
+):focus-visible {
+  outline: 2px solid var(--basekit-form-focus-color);
+  outline-offset: 2px;
+}
+
+:where(.form-item .description, .form-composite .description) {
+  color: var(--basekit-form-description-color);
+}
+
+:where(.user-login-form, .user-pass) {
+  width: min(100%, var(--basekit-login-form-width));
+}
