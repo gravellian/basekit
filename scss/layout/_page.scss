@@ -11,6 +11,14 @@ body {
   align-items: center;
 }
 
+/*
+ * Gin renders its frontend secondary toolbar as a direct body child. Keep it
+ * full-width when BaseKit's centered flex body would otherwise shrink it.
+ */
+.gin-secondary-toolbar--frontend {
+  width: 100%;
+}
+
 a#main-content {
   /* anchor link to main content has no height */
   height: 0px;
