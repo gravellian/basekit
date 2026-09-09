@@ -1,8 +1,7 @@
 <div class="layout">
-  {% if props.icon_media %}
+  {% if props.icon %}
     <div class="media">
-      {% set icon_markup = drupal_entity('media', props.icon_media.id, 'default') %}
-      {% if props.url %}<a href="{{ props.url }}">{{ icon_markup }}</a>{% else %}{{ icon_markup }}{% endif %}
+      {% if props.url %}<a href="{{ props.url }}">{{ props.icon|raw }}</a>{% else %}{{ props.icon|raw }}{% endif %}
     </div>
   {% endif %}
   <div class="main">

@@ -18,7 +18,7 @@
         <div class="paragraph">
           {% if topic_icon_media %}
             <div class="topic-icon">
-              {{ drupal_entity('media', topic_icon_media.id, 'default') }}
+              {{ drupal_entity('media', topic.field_topic_icon.0.target_id, 'default') }}
             </div>
           {% endif %}
 

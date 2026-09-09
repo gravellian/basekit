@@ -13,7 +13,7 @@
   {% set link_item = block and block.field_block_link.0 ? block.field_block_link.0 : null %}
   {% set link_url = link_item and link_item.url ? link_item.url : '' %}
   {% set link_title = link_item and link_item.title ? link_item.title : '' %}
-  {% set icon_media = block and block.field_block_icon.entity ? block.field_block_icon.entity : null %}
+  {% set icon = content.field_block_icon is defined ? content.field_block_icon|render : '' %}
   {{ include('@basekit/components/hero_headline/hero_headline.html.twig', {
     props: {
       has_label: label ? true : false,
@@ -21,7 +21,7 @@
       text: text,
       url: link_url,
       link_title: link_title,
-      icon_media: icon_media,
+      icon: icon,
       background: background,
       view_mode: vm,
     }
