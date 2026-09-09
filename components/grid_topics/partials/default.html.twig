@@ -13,12 +13,14 @@
         {% set topic_title = topic ? topic.field_topic_title.value|default('') : '' %}
         {% set topic_text = topic ? topic.field_topic_text.processed|default(topic.field_topic_text.value|default('')) : '' %}
         {% set topic_link = topic ? topic.field_topic_link.0|default(null) : null %}
-        {% set topic_icon_media = topic ? topic.field_topic_icon.entity|default(null) : null %}
+        {% set topic_icon_media_id = topic and topic.field_topic_icon.0
+          ? topic.field_topic_icon.0.target_id|default(null)
+          : null %}
 
         <div class="paragraph">
-          {% if topic_icon_media %}
+          {% if topic_icon_media_id %}
             <div class="topic-icon">
-              {{ drupal_entity('media', topic.field_topic_icon.0.target_id, 'default') }}
+              {{ drupal_entity('media', topic_icon_media_id ~ '', 'default') }}
             </div>
           {% endif %}
 
